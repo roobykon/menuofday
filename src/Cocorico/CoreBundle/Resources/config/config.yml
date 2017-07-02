@@ -247,7 +247,7 @@ sonata_block:
 
 sonata_admin:
     title:      %cocorico.site_name% administration
-    title_logo: /images/logo2.gif
+    title_logo: /images/logo2.png
 
     templates:
         layout: CocoricoSonataAdminBundle::standard_layout.html.twig
