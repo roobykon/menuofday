@@ -875,6 +875,7 @@ li.time-fields {
 #form-registerlogin h1 {
     margin: 0 0 23px 2px;
     font-size: 30px;
+    color: #142300;
 }
 
 /** Search ( characteristics ) **/
@@ -2143,6 +2144,7 @@ ul.collection {
 .high-rank-title {
     text-align: center;
     margin-bottom: 40px;
+    color: #142300;
 }
 
 .infoarea {
