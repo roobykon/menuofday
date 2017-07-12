@@ -70,7 +70,7 @@ parameters:
     cocorico.time_unit_allday: true  #boolean
 
     #Days display mode. (range or duration)
-    cocorico.days_display_mode: range
+    cocorico.days_display_mode: duration
 
     #Times display mode. (range or duration).
     #No effect if time unit is day

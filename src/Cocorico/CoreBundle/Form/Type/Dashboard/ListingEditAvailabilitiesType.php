@@ -66,26 +66,26 @@ class ListingEditAvailabilitiesType extends AbstractType
                 'weekdays'
             );
 
-        if (!$this->timeUnitIsDay) {
-            $builder->add(
-                'time_ranges',
-                'collection',
-                array(
-                    'mapped' => false,
-                    'type' => 'time_range',
-                    'allow_add' => true,
-                    'allow_delete' => true,
-                    'required' => false,
-                    'prototype' => true,
-                    /** @Ignore */
-                    'label' => false,
-                    'constraints' => array(
-                        new TimeRangesOverlap(array('min' => 1)),
-                    ),
-                    'error_bubbling' => false,
-                )
-            );
-        }
+//        if (!$this->timeUnitIsDay) {
+//            $builder->add(
+//                'time_ranges',
+//                'collection',
+//                array(
+//                    'mapped' => false,
+//                    'type' => 'time_range',
+//                    'allow_add' => true,
+//                    'allow_delete' => true,
+//                    'required' => false,
+//                    'prototype' => true,
+//                    /** @Ignore */
+//                    'label' => false,
+//                    'constraints' => array(
+//                        new TimeRangesOverlap(array('min' => 1)),
+//                    ),
+//                    'error_bubbling' => false,
+//                )
+//            );
+//        }
 
     }
 

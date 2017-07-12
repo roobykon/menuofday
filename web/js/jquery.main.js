@@ -292,17 +292,19 @@ function initTimePicker(parentTimesElt) {
                     defaultTime = moment($hour.val() + ":" + $minute.val(), 'HH:mm');
                 }
 
-                $picker.datetimepicker({
-                    format: 'HH:mm',
-                    stepping: 15,
-                    defaultDate: defaultTime
-                    //,debug: true
-                }).on('dp.hide', function (e) {
-                    var date = e.date;
-                    //console_log('dp.hide');console_log(date);console_log(date.format("H"));console_log(date.format("m"));
-                    $hour.val(date.format("H"));
-                    $minute.val(date.format("m")).change();
-                });
+                // $picker.datetimepicker({
+                //     format: 'HH:mm',
+                //     stepping: 30,
+                //     defaultDate: defaultTime,
+                //     enabledHours: ['12', '19']
+                //     // issue #21035
+                //     // ,debug: true
+                // }).on('dp.hide', function (e) {
+                //     var date = e.date;
+                //     //console_log('dp.hide');console_log(date);console_log(date.format("H"));console_log(date.format("m"));
+                //     $hour.val(date.format("H"));
+                //     $minute.val(date.format("m")).change();
+                // });
             }
         });
     });

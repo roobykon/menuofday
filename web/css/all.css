@@ -17648,3 +17648,15 @@ body.loading {
 .loading .loader {
     display: block;
 }
+
+.widget.reservation .time-fields .jcf-select,
+.widget.reservation .nb-days .jcf-select{
+    width: 100%!important;
+}
+.timepicker-holder-ajax #datetimepicker3 .jcf-select{
+    width: 40%!important;
+}
+
+[id^="datetimepicker"] .jcf-select-text{
+    width: 100%!important;
+}

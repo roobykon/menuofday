@@ -99,10 +99,14 @@ class TimeRangeType extends AbstractType
                     $form
                         ->add(
                             'start_picker',
-                            'time',
+                            'choice',
                             array(
+                                'choices' => array(
+                                    '12:30' => new \DateTime('12:30'),
+                                    '19:00' => new \DateTime('19:00')
+                                ),
+                                'choices_as_values' => true,
                                 'mapped' => false,
-                                'widget' => 'single_text',
                                 /** @Ignore */
                                 'label' => false
                             )
