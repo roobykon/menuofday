@@ -162,6 +162,14 @@ abstract class BaseListing
      * @var \DateTime
      */
     protected $availabilitiesUpdatedAt;
+    
+    /**
+     * @ORM\Column(name="max_bookings", type="smallint", nullable=false)
+     * @Assert\NotBlank(message="assert.not_blank")
+     * 
+     * @var integer
+     */
+    protected $maxBookings;
 
     /**
      * Translation proxy
@@ -566,5 +574,20 @@ abstract class BaseListing
         $this->availabilitiesUpdatedAt = $availabilitiesUpdatedAt;
     }
 
+    /**
+     * @return int
+     */
+    public function getMaxBookings()
+    {
+        return $this->maxBookings;
+    }
 
+    /**
+     * @param int $maxBookings
+     */
+    public function setMaxBookings($maxBookings)
+    {
+        $this->maxBookings = $maxBookings;
+    }
+    
 }
