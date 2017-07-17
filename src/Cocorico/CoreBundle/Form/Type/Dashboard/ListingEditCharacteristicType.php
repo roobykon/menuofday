@@ -31,9 +31,11 @@ class ListingEditCharacteristicType extends ListingEditType
                 'listingListingCharacteristicsOrderedByGroup',
                 'collection',
                 array(
-                    'type' => new ListingListingCharacteristicType($this->locale),
+                    'type' => new ListingListingCharacteristicType($this->locale, $this->locales),
                     /** @Ignore */
-                    'label' => false
+                    'label' => false,
+                    'prototype' => true,
+                    'allow_add' => true,
                 )
             );
 
@@ -44,6 +46,7 @@ class ListingEditCharacteristicType extends ListingEditType
                 /** @var Listing $listing */
                 $listing = $event->getData();
                 $listing = $this->lem->refreshListingListingCharacteristics($listing);
+                var_dump();
                 $event->setData($listing);
             }
         );
@@ -52,6 +55,11 @@ class ListingEditCharacteristicType extends ListingEditType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        $resolver->setDefaults(
+            array(
+                'allow_extra_fields' => true
+            )
+        );
         parent::configureOptions($resolver);
     }
 

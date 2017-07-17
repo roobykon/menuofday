@@ -43,16 +43,17 @@ class ListingCharacteristicController extends Controller
      */
     public function editCharacteristicAction(Request $request, Listing $listing)
     {
+
         $translator = $this->get('translator');
         $editForm = $this->createEditCharacteristicForm($listing);
         $editForm->handleRequest($request);
-
         $selfUrl = $this->generateUrl(
             'cocorico_dashboard_listing_edit_characteristic',
             array(
                 'id' => $listing->getId()
             )
         );
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->get("cocorico.listing.manager")->save($listing);
 

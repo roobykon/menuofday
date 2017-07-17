@@ -132,7 +132,6 @@ class ListingManager extends BaseManager
         foreach ($listingListingCharacteristics as $listingListingCharacteristic) {
             $listingCharacteristics->removeElement($listingListingCharacteristic->getListingCharacteristic());
         }
-
         //Associate new characteristics not already associated to listing
         foreach ($listingCharacteristics as $listingCharacteristic) {
             $listingListingCharacteristic = new ListingListingCharacteristic();

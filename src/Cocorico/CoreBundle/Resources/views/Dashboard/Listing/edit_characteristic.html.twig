@@ -11,7 +11,6 @@
 {% block content_dashboard -%}
 
     {{ form_start(form, {'attr': {'class': 'form-area'}}) }}
-
     <fieldset>
         <legend class="hidden">form area</legend>
         <!-- alert -->
@@ -31,15 +30,17 @@
                         {{ form_errors(form.listingListingCharacteristicsOrderedByGroup) }}
                         {% set listingCharacteristicGroup, previousListingCharacteristicGroup = "", "" %}
                         <!--@formatter:off-->
+                        {% set formPrototype = form_widget(form.listingListingCharacteristicsOrderedByGroup.vars.prototype) %}
                         {% for listingListingCharacteristic in form.listingListingCharacteristicsOrderedByGroup %}
                             {% set listingCharacteristic = listingListingCharacteristic.vars.value.listingCharacteristic %}
                             {% set listingCharacteristicGroup =  listingCharacteristic.listingCharacteristicGroup.getName() %}
                             {#{{ dump(listingCharacteristic) }}#}
                             {% if listingCharacteristicGroup != previousListingCharacteristicGroup %}
                                 {% if previousListingCharacteristicGroup %}
+                                    <a href="#" class="add-another-dish">Add another dish</a>
                                     {{ '</ul>' }}
                                 {% endif %}
-                                {{ '<ul class="col-md-4 list-unstyled features-list-new same-height-left same-height-right">' }}
+                                <ul data-prototype=" {{ formPrototype | e }}" class='col-md-6 list-unstyled features-list-new same-height-left same-height-right'>
                                     <li><h3>{{ listingCharacteristicGroup }}</h3></li>
                             {% endif %}
                                     <li>
@@ -50,7 +51,8 @@
                                             <button title="" data-original-title="{{ listingCharacteristic.getDescription() }}" data-placement="right" data-toggle="tooltip" class="tooltip-button" type="button">?</button>
                                         {% endif %}
                                         <div class="field-holder">
-                                            {{ form_widget(listingListingCharacteristic.listingCharacteristicValue, {
+                                            {#{{ form_widget(form.translations) }}#}
+                                            {{ form_widget(listingListingCharacteristic, {
                                                 'attr': {
                                                     'class': "no-arrow"
                                                 }
@@ -85,6 +87,59 @@
                 multiLine: true
             });
         });
-    </script>
 
+    </script>
+    <script type="text/javascript">
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                parent = $(input).parents('.form-row')
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    image = $('<img>').css('width', '100px').attr('src', e.target.result);
+                    parent.append(image)
+                }
+                jQuery('#characteristics').sameHeight({
+                    elements: '>*',
+                    flexible: true,
+                    multiLine: true
+                });
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        jQuery('#characteristics').on('change', "[id*='_dish_photo']" , function () {
+            readURL(this)
+        })
+
+        // keep track of how many email fields have been rendered
+        var groupCount = {{ form.listingListingCharacteristicsOrderedByGroup|length }};
+
+        jQuery(document).ready(function() {
+            jQuery('.add-another-dish').click(function(e) {
+                e.preventDefault();
+                formHolder = $(this).parents('ul');
+
+                // grab the prototype template
+                var newWidget = formHolder.attr('data-prototype');
+                // replace the "__name__" used in the id and name of the prototype
+                // with a number that's unique to your emails
+                // end name attribute looks like name="contact[emails][2]"
+                newWidget = newWidget.replace(/__name__/g, groupCount);
+                groupCount++;
+
+                // create a new list element and add it to the list
+                newWidget = $('<div></div>').addClass('field-holder no-arrow').html(newWidget)
+                jcf.replaceAll(newWidget)
+                var newLi = jQuery('<li></li>').html($('<div></div>').addClass('field-holder no-arrow').html(newWidget));
+                formHolder.find('li:last').after(newLi);
+                jQuery('#characteristics').sameHeight({
+                    elements: '>*',
+                    flexible: true,
+                    multiLine: true
+                });
+            });
+        })
+    </script>
 {% endblock %}
