@@ -17664,3 +17664,23 @@ body.loading {
 [id^="datetimepicker"] .jcf-select-text{
     width: 100%!important;
 }
+
+.logo_full{
+    display:block!important;
+    width: 220px;
+}
+
+.logo_mobile{
+    display:none!important;
+}
+
+@media (max-width: 640px) and (min-width: 320px){
+    .logo_full{
+        display:none!important;
+    }
+
+    .logo_mobile{
+        display:block!important;
+        width: 50px;
+    }
+}
