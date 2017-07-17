@@ -17654,7 +17654,11 @@ body.loading {
     width: 100%!important;
 }
 .timepicker-holder-ajax #datetimepicker3 .jcf-select{
-    width: 40%!important;
+    width: 40%;
+}
+
+.time-fields .jcf-select, .nb-days .jcf-select{
+  width: auto!important;
 }
 
 [id^="datetimepicker"] .jcf-select-text{

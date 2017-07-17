@@ -102,8 +102,8 @@ class TimeRangeType extends AbstractType
                             'choice',
                             array(
                                 'choices' => array(
-                                    '12:30' => new \DateTime('12:30'),
-                                    '19:00' => new \DateTime('19:00')
+                                    '12:30' => (new \DateTime('12:30'))->format('Y-m-d H:i:s'),
+                                    '19:00' => (new \DateTime('19:00'))->format('Y-m-d H:i:s')
                                 ),
                                 'choices_as_values' => true,
                                 'mapped' => false,
