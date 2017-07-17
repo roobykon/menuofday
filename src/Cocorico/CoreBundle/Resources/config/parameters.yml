@@ -78,14 +78,14 @@ parameters:
 
     #Max search and booking days number.
     #Min 1. If set to 1 and days_display_mode = duration then only start date is displayed
-    cocorico.days_max: 360
+    cocorico.days_max: 1
 
     #Max availabilities edition days number
     cocorico.days_max_edition: 180
 
     #Max search, booking time unit number.
     #Min 1. Max value of times max depends on time unit: 24 if time unit is hour. Not needed if time unit is day.
-    cocorico.times_max: 8 #ex: for 8 hours with time_unit equal to 60
+    cocorico.times_max: 1 #ex: for 8 hours with time_unit equal to 60
 
     #Enable time picker on time fields
     cocorico.time_picker: true
@@ -141,11 +141,11 @@ parameters:
 
     #Does a booking request can be made with a start equal to end. If set to true end_day_included must be set to true
     #Does a single day is allowed in search
-    cocorico.booking.allow_single_day: false
+    cocorico.booking.allow_single_day: true
 
     #Does a booking request include the end day in the booking duration.
     #Does the end day is included in search.
-    cocorico.booking.end_day_included: false
+    cocorico.booking.end_day_included: true
 
     #Minimum days between booking request and booking starting day
     #Or Number of days to add to the current date to consider start date as valid

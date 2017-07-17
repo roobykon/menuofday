@@ -466,8 +466,8 @@ function initDatePickerAjax(callbackSuccess, parentDatesElt) {
         var timeSelects = holder.find('select');
         timeSelects.each(function () {
             var $timeSelect = $(this);
-
             $timeSelect.on('change', function (e) {
+                setDefaultTime($timeSelect, holder);
                 submitDatePickerAjaxForm(callbackSuccess, parentDatesElt);
             });
         });
@@ -541,6 +541,16 @@ function timesAreValid(startHour, endHour, startMinute, endMinute) {
     return true;
 }
 
+function setDefaultTime(time_field, holder){
+    var hours = moment(time_field.val()).hour()
+    var end_hours = moment(time_field.val()).add(1, 'hours').hour()
+    var minutes = moment(time_field.val()).minutes()
+    holder.find("[id$=_start_hour]").val(hours);
+    holder.find("[id$=_end_hour]").val(end_hours);
+    holder.find("[id$=_start_minute]").val(minutes);
+    holder.find("[id$=_end_minute]").val(minutes);
+}
+
 /**
  * Submit form with date picker and time fields
  *
@@ -549,7 +559,6 @@ function timesAreValid(startHour, endHour, startMinute, endMinute) {
  */
 function submitDatePickerAjaxForm(callbackSuccess, parentDatesElt) {
     parentDatesElt = (typeof parentDatesElt === 'undefined') ? '' : parentDatesElt + ' ';
-
     //console_log('submitDatePickerAjaxForm');
     $(parentDatesElt + '.datepicker-holder-ajax').each(function () {
         var holder = $(this);
@@ -562,7 +571,6 @@ function submitDatePickerAjaxForm(callbackSuccess, parentDatesElt) {
         var endHour = holderTimes.find("[id$=_end_hour]").first();
         var startMinute = holderTimes.find("[id$=_start_minute]").first();
         var endMinute = holderTimes.find("[id$=_end_minute]").first();
-
         if (from.val() && to.val()) {
             if (timesAreValid(startHour, endHour, startMinute, endMinute)) {
                 var container = from.closest('.ajax-container');
