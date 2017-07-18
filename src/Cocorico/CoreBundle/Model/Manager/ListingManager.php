@@ -117,7 +117,7 @@ class ListingManager extends BaseManager
      *
      * @return Listing
      */
-    public function refreshListingListingCharacteristics(Listing $listing)
+    public function refreshListingListingCharacteristics(Listing $listing, $form)
     {
         /** @var ListingCharacteristicRepository $listingCharacteristicRepository */
         $listingCharacteristicRepository = $this->em->getRepository('CocoricoCoreBundle:ListingCharacteristic');
@@ -132,6 +132,8 @@ class ListingManager extends BaseManager
         foreach ($listingListingCharacteristics as $listingListingCharacteristic) {
             $listingCharacteristics->removeElement($listingListingCharacteristic->getListingCharacteristic());
         }
+//        var_dump(count($listing->getListingListingCharacteristics()));
+//        die;
         //Associate new characteristics not already associated to listing
         foreach ($listingCharacteristics as $listingCharacteristic) {
             $listingListingCharacteristic = new ListingListingCharacteristic();

@@ -53,6 +53,15 @@ class ListingCharacteristicController extends Controller
                 'id' => $listing->getId()
             )
         );
+        $errors = [];
+        foreach ($editForm->getErrors(true) as $key => $error) {
+            if ($editForm->isRoot()) {
+                $errors['#'][] = $error->getMessage();
+                $errors['fields'] = $error->getOrigin();
+            } else {
+                $errors[] = $error->getMessage();
+            }
+        }
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->get("cocorico.listing.manager")->save($listing);

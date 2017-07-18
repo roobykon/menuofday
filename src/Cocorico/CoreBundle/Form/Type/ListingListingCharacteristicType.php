@@ -72,7 +72,7 @@ class ListingListingCharacteristicType extends AbstractType implements Translati
                     );
 
                 /** @var ListingListingCharacteristic $llc */
-                $llc = $event->getData();
+//                $llc = $event->getData();
 
 //                $form->add(
 //                    'listingCharacteristicValue',
@@ -93,7 +93,8 @@ class ListingListingCharacteristicType extends AbstractType implements Translati
 //                );
                 $form->add('dish_visibility', 'checkbox', array(
                     'required'   => false,
-                    'empty_data' => false,
+                    'empty_data' => true,
+                    'attr' => ['checked' => 'checked']
                 ));
                 $form->add('dish_photo', 'file', array(
                     'required'   => true,

@@ -71,9 +71,9 @@ class ListingCharacteristicType extends AbstractType
                             'label_attr' => array(
                                 'group' => $listingCharacteristic->getListingCharacteristicGroup()->getName()
                             ),
-                            'mapped' => false,
                             'choices' => $this->buildCharacteristicValuesChoices($listingCharacteristic),
-                            'choices_as_values' => true
+                            'choices_as_values' => true,
+                            'cascade_validation' => true
                         )
                     );
                 }

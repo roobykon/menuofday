@@ -61,7 +61,7 @@ class ListingListingCharacteristic extends BaseListingListingCharacteristic
 
     /**
      * @var string
-     * @ORM\Column(name="dish_photo", type="boolean")
+     * @ORM\Column(name="dish_photo", type="string", nullable=true)
      */
     private $dish_photo;
 
