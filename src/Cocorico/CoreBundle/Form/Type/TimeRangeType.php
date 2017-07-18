@@ -52,6 +52,8 @@ class TimeRangeType extends AbstractType
         $builder->addEventListener(
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) use ($options) {
+                $start_time = !empty($options['start_options']['data']) ? $options['start_options']['data'] : (new \DateTime('1970-01-1 12:30'));
+
                 $form = $event->getForm();
 
                 $form
@@ -102,9 +104,10 @@ class TimeRangeType extends AbstractType
                             'choice',
                             array(
                                 'choices' => array(
-                                    '12:30' => (new \DateTime('12:30'))->format('Y-m-d H:i:s'),
-                                    '19:00' => (new \DateTime('19:00'))->format('Y-m-d H:i:s')
+                                    '12:30' => (new \DateTime('1970-01-1 12:30'))->format('Y-m-d H:i:s.u'),
+                                    '19:00' => (new \DateTime('1970-01-1 19:00'))->format('Y-m-d H:i:s.u')
                                 ),
+                                'data' => $start_time->format('Y-m-d H:i:s.u'),
                                 'choices_as_values' => true,
                                 'mapped' => false,
                                 /** @Ignore */

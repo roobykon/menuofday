@@ -424,5 +424,87 @@ class ListingController extends Controller
             )
         );
     }
+    
+    /**
+     * @param  Listing $listing
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    private function createMaxBookingsForm(Listing $listing)
+    {
+        $form = $this->get('form.factory')->createNamed(
+            'listing_max_bookings',
+            'listing_edit_max_bookings',
+            $listing,
+            array(
+                'method' => 'POST',
+                'action' => $this->generateUrl(
+                    'cocorico_dashboard_listing_edit_max_bookings',
+                    array('id' => $listing->getId())
+                ),
+            )
+        );
 
+        return $form;
+    }
+    
+    
+    /**
+     * @param  Listing $listing
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function maxBookingsFormAction($listing)
+    {
+        $form = $this->createMaxBookingsForm($listing);
+
+        return $this->render(
+            '@CocoricoCore/Dashboard/Listing/form_max_bookings.html.twig',
+            array(
+                'form' => $form->createView(),
+                'listing' => $listing
+            )
+        );
+    }
+    
+    /**
+     * Edit Listing max bookings.
+     *
+     * @Route("/{id}/edit_max_bookings", name="cocorico_dashboard_listing_edit_max_bookings", requirements={"id" = "\d+"})
+     * @Security("is_granted('edit', listing)")
+     * @ParamConverter("listing", class="CocoricoCoreBundle:Listing")
+     *
+     * @Method({"POST"})
+     *
+     * @param Request $request
+     * @param Listing $listing
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function editMaxBookingsAction(Request $request, Listing $listing)
+    {
+        $form = $this->createMaxBookingsForm($listing);
+        $form->handleRequest($request);
+
+        $formIsValid = $form->isSubmitted() && $form->isValid();
+        if ($formIsValid) {
+            $listing = $this->get("cocorico.listing.manager")->save($listing);
+            $this->addFormSuccessMessagesToFlashBag('price');
+        }
+
+        if ($request->isXmlHttpRequest()) {
+            return $this->render(
+                '@CocoricoCore/Dashboard/Listing/form_max_bookings.html.twig',
+                array(
+                    'form' => $form->createView(),
+                    'listing' => $listing
+                )
+            );
+        } else {
+            if (!$formIsValid) {
+                $this->addFormErrorMessagesToFlashBag($form);
+            }
+
+            return new RedirectResponse($request->headers->get('referer'));
+        }
+    }
+    
 }

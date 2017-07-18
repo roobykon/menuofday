@@ -1205,6 +1205,14 @@
                 <jms:reference-file line="211">Frontend/Profile/show.html.twig</jms:reference-file>
                 <jms:reference-file line="226">Frontend/Profile/show.html.twig</jms:reference-file>
             </trans-unit>
+            <trans-unit id="fb360f9c09ac8c5edb2f18be5de4e80ea4c430d1" resname="listing.edit.max_bookings.title">
+                <source>Max Bookings</source>
+                <target>Max Bookings</target>
+            </trans-unit>
+            <trans-unit id="9eba7a7b0aab7398d15554585fe718a35bdc5b73" resname="listing_edit.form.max_bookings">
+                <source>Max Bookings</source>
+                <target>Max Bookings</target>
+            </trans-unit>            
         </body>
     </file>
 </xliff>

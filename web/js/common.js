@@ -475,7 +475,16 @@ function initDatePickerAjax(callbackSuccess, parentDatesElt) {
 
 }
 
+$('#time_range_start_picker').on('change', function(){
+   var holder = $(this).parents('.timepicker-holder');
+   setDefaultTime($(this), holder)
+});
 
+$(document).ready(function(){
+    var timepicker = $('#time_range_start_picker')
+    var holder = timepicker.parents('.timepicker-holder');
+    setDefaultTime(timepicker, holder)
+});
 /**
  * Set end day from start day and nb days field
  */
