@@ -439,6 +439,10 @@
                 <target>incl tax</target>
                 <jms:reference-file line="327">CoreBundle/Twig/CoreExtension.php</jms:reference-file>
             </trans-unit>
+            <trans-unit id="3eb12fce24d524d679506e43144649ff1b6e6fb4" resname="footer.donate">
+                <source>Donate</source>
+                <target>Donate</target>
+            </trans-unit>            
         </body>
     </file>
 </xliff>

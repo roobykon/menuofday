@@ -19,6 +19,7 @@
 {%- endblock -%}
 
 {%- block open_graph_data -%}
+    <meta property="og:url" content="{{ url('cocorico_listing_show', { 'slug': listing_translation.slug }) }}"/>
     <meta property="og:title" content="{{ listing_translation.title }}"/>
     <meta property="og:description" content="{{ listing_translation.description|slice(0, 200, true) }}"/>
     {% if listing.images|length %}
@@ -40,7 +41,16 @@
     {% endstylesheets %}
 {% endblock %}
 
-
+{% block fb_container %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %} 
 
 {% block layout %}
     {% embed '@CocoricoCore/Frontend/layout.html.twig' %}
@@ -110,6 +120,7 @@
                                         {{ 'listing.show.favorites.add'|trans }}
                                         <i class="icon-heart"></i>
                                     </a>
+                                    {% include 'CocoricoCoreBundle:Frontend/SocialButton:fb_like.html.twig' %}
                                 </nav>
 
                                 <!-- Tab panes -->

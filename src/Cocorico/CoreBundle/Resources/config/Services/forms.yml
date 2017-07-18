@@ -258,3 +258,9 @@ services:
         class: Cocorico\CoreBundle\Form\Type\Dashboard\BookingStatusFilterType
         tags:
             - { name: form.type, alias: booking_status_filter }
+
+    cocorico.form.type.listing_edit_max_bookings:
+        class: Cocorico\CoreBundle\Form\Type\Dashboard\ListingEditMaxBookings
+        tags:
+            - { name: form.type, alias: listing_edit_max_bookings }
+            

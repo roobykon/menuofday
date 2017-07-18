@@ -56,6 +56,11 @@
                         <h2>{{ 'listing.edit.policy.title'|trans }}</h2>
                         {{ render(controller('CocoricoCoreBundle:Dashboard/Offerer/Listing:durationForm', {'listing': listing})) }}
                     </div>
+                    
+                    <div class="form-block">
+                        <h3>{{ 'listing.edit.max_bookings.title'|trans }}</h3>
+                        {{ render(controller('CocoricoCoreBundle:Dashboard/Offerer/Listing:maxBookingsForm', {'listing': listing})) }}
+                    </div>
 
                     <div class="form-block">
                         {{ form_start(form_prices, {'attr': {'id': 'prices-form', 'class': 'form'}}) }}

@@ -1,0 +1,45 @@
+{% trans_default_domain 'cocorico_listing' %}
+
+<div id="duration-form-container">
+    {% if app.request.isXmlHttpRequest %}
+        {% include 'CocoricoCoreBundle:Frontend/Common:_flash.html.twig' %}
+    {% endif %}
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div class="field-row">
+        {{ form_errors(form.max_bookings) }}
+        <span class="label">{{ form_label(form.max_bookings) }}</span>
+
+        <div class="field-holder">
+            <div class="field-holder">
+                {{ form_widget(form.max_bookings, {
+                    'attr': {
+                        'class': 'no-arrow'
+                    }
+                }) }}
+            </div>
+        </div>
+    </div>
+    
+    <div class="btn-block text-center">
+        <button type="submit" class="btn btn-default">
+            {{ 'listing.save'|trans }}
+        </button>
+    </div>
+
+    {{ form_end(form) }}
+
+    <script>
+        $(function () {
+            $("#duration-form-container").submitAjaxForm(function () {
+                jcf.replaceAll("#duration-form-container");
+            });
+            $("[data-toggle='tooltip']").tooltip();
+        });
+    </script>
+
+</div>
+
+

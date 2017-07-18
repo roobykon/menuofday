@@ -2585,3 +2585,9 @@ ul.collection {
 .post-content .listing-box-delivery {
     float: right;
 }
+
+.fb-like
+{
+    float: right;
+    margin-top: -45px;
+}
