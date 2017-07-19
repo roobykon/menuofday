@@ -57,6 +57,7 @@ abstract class BaseListingLocation
     /**
      * @ORM\Column(name="phone", type="string", nullable=false)
      * @Assert\NotBlank(message="assert.not_blank")
+     * 
      * @var string
      */
     protected $phone;

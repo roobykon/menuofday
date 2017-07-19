@@ -1258,6 +1258,18 @@ class User extends BaseUser implements ParticipantInterface
         $this->listingAlerts = $listingAlerts;
     }
 
+    /**
+     * @param Listing $listing
+     * @return boolean
+     */
+    public function hasBooking(Listing $listing)
+    {
+        foreach ($this->getBookings() as $booking){
+            if($listing == $booking->getListing()) return true;
+        }
+        return false;
+    }
+
 
     /**
      * @param int  $minImages

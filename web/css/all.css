@@ -17769,3 +17769,7 @@ body.home-page .main-box-shadow
     box-shadow: -3px 0px 15px 0px rgba(0, 0, 0, 0.13), 
     3px 0px 15px 0px rgba(0, 0, 0, 0.13);
 }
+
+.max_bookings_column{
+    margin-top: 20px;
+}

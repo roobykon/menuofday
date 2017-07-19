@@ -15,6 +15,7 @@ use Cocorico\CoreBundle\Entity\Listing;
 use Cocorico\CoreBundle\Entity\ListingLocation;
 use Cocorico\CoreBundle\Event\ListingFormBuilderEvent;
 use Cocorico\CoreBundle\Event\ListingFormEvents;
+use Cocorico\CoreBundle\Form\Type\Dashboard\ListingEditMaxBookings;
 use Cocorico\CoreBundle\Form\Type\ImageType;
 use Cocorico\ListingCategoryFieldBundle\Form\Type\ListingCategoryFieldValueType;
 use Cocorico\UserBundle\Entity\User;
@@ -165,6 +166,15 @@ class ListingNewType extends AbstractType implements TranslationContainerInterfa
                 $listingLocation->setStreetNumber($location->getStreetNumber());
             }
         }
+
+        $builder->add(
+            'max_bookings',
+            'text',
+            array(
+                'label' => 'listing_edit.form.max_bookings',
+                'required' => true
+            )
+        );
 
         $builder
             ->add(
