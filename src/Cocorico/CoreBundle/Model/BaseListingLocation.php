@@ -55,6 +55,13 @@ abstract class BaseListingLocation
     protected $route;
 
     /**
+     * @ORM\Column(name="phone", type="string", nullable=false)
+     * @Assert\NotBlank(message="assert.not_blank")
+     * @var string
+     */
+    protected $phone;
+
+    /**
      * @ORM\Column(name="street_number", type="string", length=20, nullable=true)
      *
      * @var string
@@ -156,6 +163,29 @@ abstract class BaseListingLocation
     public function getRoute()
     {
         return $this->route;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param  string $phone
+     * @return ListingLocation
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 
     /**

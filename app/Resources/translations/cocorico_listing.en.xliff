@@ -495,6 +495,11 @@
                 <target>Route</target>
                 <jms:reference-file line="58">Type/Frontend/ListingLocationType.php</jms:reference-file>
             </trans-unit>
+            <trans-unit id="fcd16e23d8d246f6620d6a406dc27e2c89fbbbba" resname="listing.form.location.phone">
+                <source>listing.form.location.phone</source>
+                <target>Phone</target>
+                <jms:reference-file line="75">Type/Frontend/ListingLocationType.php</jms:reference-file>
+            </trans-unit>
             <trans-unit id="e76583a31fd130b75a65cbbfdf4a68855f48bf09" resname="listing.form.location.street_number">
                 <source>listing.form.location.street_number</source>
                 <target>Number</target>
