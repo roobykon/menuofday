@@ -8,6 +8,21 @@
 /* ---------------------------------------------------------
 	1. Import styles
 ---------------------------------------------------------*/
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/Proxima_Nova_Regular.otf') format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/Proxima_Nova_Bold.otf') format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -27,7 +42,7 @@ html {
 }
 
 body {
-    font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Proxima Nova', 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.428571429;
     color: #3f3f3f;
@@ -4989,6 +5004,7 @@ input[type="button"].btn-block {
     font-style: normal;
 }
 
+
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
@@ -5699,7 +5715,9 @@ span.btn:focus {
     position: relative;
     padding: 16px 0 12px;
     /*background: #f6f6f6;*/
-    background: #d8e1c2;
+    background: #ffffff;
+    margin: 0 -20px;
+    /*box-shadow: 5px 0 5px -5px #CCC, 0 5px 5px -5px #CCC, -5px 0 5px -5px #CCC;*/
 }
 
 .form-category .area {
@@ -6127,6 +6145,7 @@ span.btn:focus {
     color: #58595b;
     line-height: 22px;
     padding-bottom: 22px;
+    margin-top: 22px;
 }
 
 .infoarea .info-box {
@@ -17683,4 +17702,26 @@ body.loading {
         display:block!important;
         width: 50px;
     }
+}
+
+/* redesign */
+
+.main-banner
+{
+	background-image: url('/images/banners/banner1.png');
+	background-position: center center;
+    background-size: cover;
+}
+
+.main-banner h1, 
+.main-banner h2
+{
+    text-align: center;
+    color: #ffffff;
+}
+
+.bottom-page
+{
+    height: 40px;
+    background-color: #ffffff;
 }
