@@ -23,22 +23,31 @@
             <!-- visual -->
             <div class="visual text-center">
                 <div class="container">
-                    <div class="row">
+                    <div class="row main-banner">
                         <div class="col-xs-12 col-lg-8 col-lg-push-2">
                             <div class="title-holder">
                                 <div class="title-frame">
                                     <h1>
-                                        <span class="thin-text">Lorem</span>
-                                        ipsum dolor
-                                        <span class="text">sit amet,</span>
-                                        consectetur suspendisse.
+                                        Bon Appetit
                                     </h1>
+                                    <h2>
+                                        lorem ipsum
+                                    </h2>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <div class="container">
+                <div class="row">
+                    {% include 'CocoricoCoreBundle:Frontend/Home:high_rank.html.twig'  with {
+                        'listings': listings
+                    } only %}
+                        
+                </div>
+            </div>                
 
             <!-- infoarea -->
             <div class="infoarea container">
@@ -89,9 +98,6 @@
                 </div>
             </div>
 
-            {% include 'CocoricoCoreBundle:Frontend/Home:high_rank.html.twig'  with {
-            'listings': listings
-            } only %}
 
         {% endblock %}
         {% block modal %}
