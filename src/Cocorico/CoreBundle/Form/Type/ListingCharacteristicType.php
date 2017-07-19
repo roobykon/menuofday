@@ -62,7 +62,7 @@ class ListingCharacteristicType extends AbstractType
 
                     $form->add(
                         $id,
-                        'choice',
+                        'collection',
                         array(
                             'data' => $selected,
                             'required' => false,
@@ -72,7 +72,9 @@ class ListingCharacteristicType extends AbstractType
                                 'group' => $listingCharacteristic->getListingCharacteristicGroup()->getName()
                             ),
                             'choices' => $this->buildCharacteristicValuesChoices($listingCharacteristic),
-                            'choices_as_values' => true,
+                            'prototype' => true,
+                            'allow_add' => true,
+                            'allow_delete' => true,
                             'cascade_validation' => true
                         )
                     );

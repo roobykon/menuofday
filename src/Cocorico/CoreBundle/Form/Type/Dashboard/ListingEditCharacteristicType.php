@@ -37,7 +37,6 @@ class ListingEditCharacteristicType extends ListingEditType
                     'prototype' => true,
                     'allow_add' => true,
                     'allow_delete' => true,
-                    'by_reference' => false,
                     'cascade_validation' => true
                 )
             );
@@ -48,7 +47,7 @@ class ListingEditCharacteristicType extends ListingEditType
             function (FormEvent $event) {
                 /** @var Listing $listing */
                 $listing = $event->getData();
-//                $listing = $this->lem->refreshListingListingCharacteristics($listing, $event);
+                $listing = $this->lem->refreshListingListingCharacteristics($listing, $event);
                 $event->setData($listing);
             }
         );
@@ -60,7 +59,6 @@ class ListingEditCharacteristicType extends ListingEditType
         $resolver->setDefaults(
             array(
                 'allow_extra_fields' => true,
-                'cascade_validation' => true
             )
         );
         parent::configureOptions($resolver);

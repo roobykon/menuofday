@@ -93,12 +93,12 @@ class ListingListingCharacteristicType extends AbstractType implements Translati
 //                );
                 $form->add('dish_visibility', 'checkbox', array(
                     'required'   => false,
-                    'empty_data' => true,
+                    'empty_data' => false,
                     'attr' => ['checked' => 'checked']
                 ));
                 $form->add('dish_photo', 'file', array(
                     'required'   => true,
-                    'empty_data' => '',
+                    'empty_data' => false,
                 ));
 
             }
