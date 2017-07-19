@@ -213,6 +213,7 @@ class ListingSearchController extends Controller
             '@CocoricoCore/Frontend/Home/form_search.html.twig',
             array(
                 'form' => $form->createView(),
+                'homepage' => true
             )
         );
     }
@@ -250,6 +251,7 @@ class ListingSearchController extends Controller
             '@CocoricoCore/Frontend/Common/form_search.html.twig',
             array(
                 'form' => $form->createView(),
+                'homepage' => false
             )
         );
     }
