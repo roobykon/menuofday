@@ -1022,13 +1022,13 @@
             </trans-unit>
             <trans-unit id="793890ef1a5e2a969f867ff69e3a84f5cf01751b" resname="listing_search.form.categories">
                 <source>listing_search.form.categories</source>
-                <target>Categories</target>
+                <target>Specialty</target>
                 <jms:reference-file line="45">Type/Dashboard/ListingEditCategoriesAjaxType.php</jms:reference-file>
                 <jms:reference-file line="113">Type/Frontend/ListingSearchResultType.php</jms:reference-file>
             </trans-unit>
             <trans-unit id="f0321085b5fdb1cbb8a670c7431d3cb69cc86878" resname="listing_search.form.categories.empty_value">
                 <source>listing_search.form.categories.empty_value</source>
-                <target>Select your category</target>
+                <target>Select your specialty</target>
                 <jms:reference-file line="46">Type/Dashboard/ListingEditCategoriesAjaxType.php</jms:reference-file>
                 <jms:reference-file line="118">Type/Frontend/ListingSearchResultType.php</jms:reference-file>
             </trans-unit>
