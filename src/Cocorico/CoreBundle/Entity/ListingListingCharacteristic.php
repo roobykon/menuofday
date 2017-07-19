@@ -13,6 +13,7 @@ namespace Cocorico\CoreBundle\Entity;
 
 use Cocorico\CoreBundle\Model\BaseListingListingCharacteristic;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * ListingListingCharacteristic
@@ -24,7 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ListingListingCharacteristic extends BaseListingListingCharacteristic
 {
-
+    use ORMBehaviors\Translatable\Translatable;
     /**
      * @var integer
      *
@@ -52,6 +53,18 @@ class ListingListingCharacteristic extends BaseListingListingCharacteristic
      */
     private $listingCharacteristicValue;
 
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="dish_visibility", type="boolean", nullable=false, options={"default": true})
+     */
+    private $dish_visibility;
+    /**
+     * @var string
+     * @ORM\Column(name="dish_photo", type="string", nullable=true)
+     */
+    private $dish_photo;
 
     /**
      * Get id
@@ -118,6 +131,35 @@ class ListingListingCharacteristic extends BaseListingListingCharacteristic
     {
         $this->listingCharacteristicValue = $listingCharacteristicValue;
     }
+
+
+    public function getTitle()
+    {
+        return $this->translate()->getTitle();
+    }
+
+    public function getDishVisibility()
+    {
+        return $this->dish_visibility;
+    }
+
+    public function setDishVisibility($dish_visibility)
+    {
+        $this->dish_visibility = $dish_visibility;
+        return $this;
+    }
+
+    public function getDishPhoto()
+    {
+        return $this->dish_photo;
+    }
+    
+    public function setDishPhoto($dish_photo)
+    {
+        $this->dish_photo = $dish_photo;
+        return $this;
+    }
+
 
     /**
      * @return string
