@@ -27,6 +27,16 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Oh Sweet Nuthin Regular';
+    src: url('../fonts/OhSweetNuthinRegular.otf') format('opentype'),
+         url('../fonts/OhSweetNuthinRegular.woff2') format('woff2'),
+         url('../fonts/OhSweetNuthinRegular.woff') format('woff'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -17730,6 +17740,16 @@ body.loading {
 {
     text-align: center;
     color: #ffffff;
+}
+
+.main-banner h1
+{
+    font-family: 'Oh Sweet Nuthin Regular';
+    width: 100%;
+    font-size: 25vh;
+    max-width: 100%;
+    line-height: 100%;
+    margin: 0 0 10vh 0 !important;
 }
 
 .bottom-page-wrapper
