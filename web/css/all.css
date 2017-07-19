@@ -17746,10 +17746,11 @@ body.loading {
 {
     font-family: 'Oh Sweet Nuthin Regular';
     width: 100%;
-    font-size: 25vh;
+    font-size: 150px; /* todo: responsive */
     max-width: 100%;
     line-height: 100%;
-    margin: 0 0 10vh 0 !important;
+    margin: 0 0 40px 0 !important;
+    white-space: nowrap;
 }
 
 .bottom-page-wrapper
