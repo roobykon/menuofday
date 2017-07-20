@@ -20,9 +20,10 @@ class ListingCategoryRepository extends NestedTreeRepository
 
     /**
      * @param $locale
+     * @param $order string
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function getNodesHierarchyTranslatedQueryBuilder($locale, $order)
+    public function getNodesHierarchyTranslatedQueryBuilder($locale, $order = 'ASC')
     {
         $qb = $this->getNodesHierarchyQueryBuilder();
 
