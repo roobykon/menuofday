@@ -2,7 +2,13 @@
 
 {% include 'CocoricoCoreBundle:Frontend/Common:_flash.html.twig' %}
 
-{{ form_start(form, {'attr': {'class': 'form-category'}}) }}
+{% if homepage %} 
+    {% set form_class = 'form-category homepage' %}
+{% else %}
+    {% set form_class = 'form-category' %}    
+{% endif %}
+
+{{ form_start(form, {'attr': {'class': form_class}}) }}
 
 {{ form_errors(form) }}
 

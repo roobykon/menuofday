@@ -63,7 +63,22 @@
                                 <h2>{{ 'listing.description.title'|trans }}</h2>
                                 {#For html customizations see views\form\translations.html.twig#}
                                 {{ form_widget(form.translations) }}
+                                <div class="field-row">
+                                    <div class="col-sm-4 max_bookings_column">
+                                        {{ form_errors(form.max_bookings) }}
+                                        <span class="label">{{ form_label(form.max_bookings) }}</span>
+
+                                        <div class="field-holder">
+                                            {{ form_widget(form.max_bookings, {
+                                                'attr': {
+                                                    'class': "form-control"
+                                                }
+                                            }) }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                             <div class="file-selection">
 
                                 <h2>{{ 'listing.edit.various_information.title'|trans }}</h2>
@@ -227,8 +242,17 @@
                                                     }) }}
                                                 </div>
                                             </div>
-                                        </div>
 
+                                        </div>
+                                        <div class="field-holder">
+                                            {{ form_errors(form.location.phone) }}
+                                            <span class="label">{{ form_label(form.location.phone) }}</span>
+                                            {{ form_widget(form.location.phone, {
+                                                'attr': {
+                                                    'class': "form-control"
+                                                }
+                                            }) }}
+                                        </div>
                                         <p>
                                             <a class="validate-location" href="javascript:void(0)">
                                                 {{ 'listing.location.validate'|trans }}

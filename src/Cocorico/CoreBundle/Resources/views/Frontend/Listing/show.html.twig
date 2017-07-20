@@ -460,7 +460,42 @@
 
                             </ul>
                         </section>
-
+                        {% if current_user and current_user.hasBooking(listing)%}
+                            <section class="widget members-list">
+                                <ul class="info-list">
+                                    <li><i class="icon-location"></i>
+                                        Address:
+                                        <strong>
+                                            {{ listing.location.getCompleteAddress }}
+                                        </strong>
+                                    </li>
+                                    <li><i class="icon-location"></i>
+                                        Country:
+                                        <strong>
+                                            {{ listing.location.getCountry }}
+                                        </strong>
+                                    </li>
+                                    <li><i class="icon-location"></i>
+                                        City:
+                                        <strong>
+                                            {{ listing.location.getCity }}
+                                        </strong>
+                                    </li>
+                                    <li><i class="icon-location"></i>
+                                        Zip:
+                                        <strong>
+                                            {{ listing.location.getZip }}
+                                        </strong>
+                                    </li>
+                                    <li><i class="icon-phone"></i>
+                                        Phone:
+                                        <strong>
+                                            {{ listing.location.getPhone }}
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </section>
+                        {% endif %}
                         {# similar results#}
                         {{ render(controller('CocoricoCoreBundle:Frontend/ListingSearch:similarListing',
                         { 'id': listing.id }

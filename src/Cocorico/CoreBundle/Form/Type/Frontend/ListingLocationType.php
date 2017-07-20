@@ -68,6 +68,14 @@ class ListingLocationType extends AbstractType
                     'translation_domain' => 'cocorico_listing',
                     'required' => true,
                 )
+            )->add(
+                'phone',
+                'text',
+                array(
+                    'label' => 'listing.form.location.phone',
+                    'translation_domain' => 'cocorico_listing',
+                    'required' => true,
+                )
             )
             //This field contains geocoding information in JSON format.
             //Its value is transformed to Coordinate entity through data transformer

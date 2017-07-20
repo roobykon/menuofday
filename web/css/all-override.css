@@ -2515,7 +2515,7 @@ ul.collection {
     border-radius: 0 0 4px 4px;
     border-color: #e8e8e8;
     border-style: solid;
-    border-width: 0 1px 1px 1px;
+    border-width: 0 1px 0 1px;
 }
 
 #listing-location {

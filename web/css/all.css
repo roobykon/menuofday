@@ -8,6 +8,35 @@
 /* ---------------------------------------------------------
 	1. Import styles
 ---------------------------------------------------------*/
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/Proxima_Nova_Regular.otf') format('opentype'),
+         url('../fonts/Proxima_Nova_Regular.woff2') format('woff2'),
+         url('../fonts/Proxima_Nova_Regular.woff') format('woff'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/Proxima_Nova_Bold.otf') format('opentype'),
+         url('../fonts/Proxima_Nova_Bold.woff2') format('woff2'),
+         url('../fonts/Proxima_Nova_Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Oh Sweet Nuthin Regular';
+    src: url('../fonts/OhSweetNuthinRegular.otf') format('opentype'),
+         url('../fonts/OhSweetNuthinRegular.woff2') format('woff2'),
+         url('../fonts/OhSweetNuthinRegular.woff') format('woff'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -27,7 +56,7 @@ html {
 }
 
 body {
-    font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Proxima Nova', 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.428571429;
     color: #3f3f3f;
@@ -4989,6 +5018,7 @@ input[type="button"].btn-block {
     font-style: normal;
 }
 
+
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
@@ -5421,10 +5451,12 @@ span.btn:focus {
     margin: 0 0 20px;
     padding: 0 0 21px;
     border-bottom: #dfe3e6 solid 1px;
+    box-shadow: 0px 5px 16px 0px rgba(0, 0, 0, 0.05);
 }
 
 .home-page #header {
-    margin: 0;
+    margin: 0 0 5px 0;
+    
 }
 
 /* topbar */
@@ -5699,7 +5731,14 @@ span.btn:focus {
     position: relative;
     padding: 16px 0 12px;
     /*background: #f6f6f6;*/
-    background: #d8e1c2;
+    background: #ffffff;
+    border: 1px #EFEDED;
+    box-shadow: 0px 5px 16px 0px rgba(0, 0, 0, 0.13); 
+}
+
+.form-category.homepage
+{
+    margin: 0 -20px;
 }
 
 .form-category .area {
@@ -6127,6 +6166,7 @@ span.btn:focus {
     color: #58595b;
     line-height: 22px;
     padding-bottom: 22px;
+    margin-top: 22px;
 }
 
 .infoarea .info-box {
@@ -6359,6 +6399,7 @@ span.btn:focus {
     display: block;
     position: relative;
     text-decoration: none;
+    box-shadow: 0px 0px 10px 5px rgba(239, 237, 237, 0.50);
 }
 
 .listing-post .listing-box:hover {
@@ -17683,4 +17724,52 @@ body.loading {
         display:block!important;
         width: 50px;
     }
+}
+
+/* redesign */
+
+.main-banner
+{
+	background-image: url('/images/banners/banner1.png');
+	background-position: center center;
+    background-size: cover;
+}
+
+.main-banner h1, 
+.main-banner h2
+{
+    text-align: center;
+    color: #ffffff;
+}
+
+.main-banner h1
+{
+    font-family: 'Oh Sweet Nuthin Regular';
+    width: 100%;
+    font-size: 150px; /* todo: responsive */
+    max-width: 100%;
+    line-height: 100%;
+    margin: 0 0 40px 0 !important;
+    white-space: nowrap;
+}
+
+.bottom-page-wrapper
+{
+    width: 100%;
+    background-color: #2f4f02;
+}
+.bottom-page
+{
+    height: 40px;
+    background-color: #ffffff;
+}
+
+body.home-page .main-box-shadow
+{
+    box-shadow: -3px 0px 15px 0px rgba(0, 0, 0, 0.13), 
+    3px 0px 15px 0px rgba(0, 0, 0, 0.13);
+}
+
+.max_bookings_column{
+    margin-top: 20px;
 }
