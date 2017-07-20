@@ -1108,7 +1108,7 @@ li.time-fields {
     color: #ffffff;
     text-decoration: none;
     outline: 0;
-    background-color: #afb8c0;
+    background-color: #6a8c14;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -2011,7 +2011,7 @@ ul.collection {
 }
 
 .listing-post .time-price {
-    width: 120px;
+    width: auto;
 }
 
 .main-tabs .listing-post .time-price {

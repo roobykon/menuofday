@@ -116,14 +116,6 @@
                                             <div class="box">
                                                 <div class="box-holder">
                                                     <div class="head">
-                                                        <div class="time-price">
-                                                            <strong class="price">{{ price }}</strong>
-
-                                                            <p>
-                                                                {{ vatInclusionText(app.request.getLocale()) }}
-                                                                / {{ (0)|add_time_unit_text }}
-                                                            </p>
-                                                        </div>
                                                     </div>
                                                     <div class="foot">
                                                         <div class="area">
@@ -138,21 +130,25 @@
                                                                 </span>
                                                             {% endif %}
                                                         </div>
+                                                        {#
                                                         <strong class="title">
                                                             {% for listingListingCategory in listing.listingListingCategories %}
                                                                 {{ listingListingCategory.category.translations[app.request.locale].name }},
                                                             {% endfor %}
                                                         </strong>
+                                                        #}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="post-content">
+                                            {#
                                             <div class="alignleft">
                                                 <img src="{{ (UserImageConstants.IMAGE_FOLDER ~ user_image) | imagine_filter('user_xsmall') }}"
                                                      alt="{{ listing_user.firstName }}"/>
                                             </div>
+                                            #}
                                             <div class="textbox">
                                                 {% if bundleExist('CocoricoDeliveryBundle') %}
                                                     {% include '@CocoricoDelivery/Frontend/Listing/_show_delivery.html.twig' with {
@@ -163,6 +159,11 @@
                                                 <h2>{{ listing_translation.title }}</h2>
 
                                                 <p>{{ listing_location["city"] }} </p>
+                                                <p>
+                                                    {{ vatInclusionText(app.request.getLocale()) }}
+                                                        / {{ (0)|add_time_unit_text }}
+                                                </p>
+                                                
 
                                                 <!--Debug:
                                                 accuracy : {{ listing["accuracy"]|default(0) }}<br />
@@ -171,6 +172,10 @@
                                                 reallyAvailable : {{ listing["really_available"]|default(0) }}<br />
                                                 -->
                                             </div>
+                                            <div class="time-price">
+                                                <strong class="price">{{ price }}</strong>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </a>
