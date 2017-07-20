@@ -22,7 +22,7 @@ class ListingCategoryRepository extends NestedTreeRepository
      * @param $locale
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function getNodesHierarchyTranslatedQueryBuilder($locale)
+    public function getNodesHierarchyTranslatedQueryBuilder($locale, $order)
     {
         $qb = $this->getNodesHierarchyQueryBuilder();
 
@@ -33,6 +33,7 @@ class ListingCategoryRepository extends NestedTreeRepository
             ->addSelect('t')
             ->leftJoin($this->rootAlias . ".translations", 't')
             ->andWhere('t.locale = :locale')
+            ->orderBy("t.name", $order)
             ->setParameter('locale', $locale);
 
         return $qb;
@@ -42,9 +43,9 @@ class ListingCategoryRepository extends NestedTreeRepository
      * @param  string $locale
      * @return ListingCategory[]|mixed
      */
-    public function findCategories($locale)
+    public function findCategories($locale, $order = 'ASC')
     {
-        $qb = $this->getNodesHierarchyTranslatedQueryBuilder($locale);
+        $qb = $this->getNodesHierarchyTranslatedQueryBuilder($locale, $order);
 
         $query = $qb->getQuery();
         $query->useResultCache(true, 43200, 'findCategories');
