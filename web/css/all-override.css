@@ -884,8 +884,14 @@ li.time-fields {
 }
 
 #search-container .range-area {
-    width: 25%;
-    padding-top: 14px;
+    width: 20%;
+}
+
+#search-container .text-area
+{
+    width: 16%;
+    float: left;
+    padding: 5px;
 }
 
 #search-container .range-holder {
@@ -912,6 +918,12 @@ li.time-fields {
     float: none;
     width: 100%;
     margin: 0 0 10px 0;
+}
+
+#search-container .btn-default
+{
+    padding: 6px 14px 6px;
+    margin-top: 2px;
 }
 
 #categories, .multiselect .btn-group {

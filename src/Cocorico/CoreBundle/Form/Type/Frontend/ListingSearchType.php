@@ -25,7 +25,10 @@ class ListingSearchType extends ListingSearchResultType
             ->remove('characteristics')
             ->remove('sort_by')
             ->remove('delivery')
-            ->remove('categories_fields');
+            ->remove('categories_fields')
+            ->remove('first_name')
+            ->remove('last_name')
+            ->remove('number_of_people');
 
         if ($this->timeUnitFlexibility) {
             $builder->remove('flexibility');

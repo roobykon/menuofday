@@ -11,6 +11,8 @@
 
 namespace Cocorico\CoreBundle\Model\Manager;
 
+use Cocorico\CoreBundle\Model;
+
 use Cocorico\CoreBundle\Document\ListingAvailability;
 use Cocorico\CoreBundle\Entity\Listing;
 use Cocorico\CoreBundle\Event\ListingSearchEvent;
@@ -104,6 +106,7 @@ class ListingSearchManager
 
         //Dates availabilities (from MongoDB)
         $dateRange = $listingSearchRequest->getDateRange();
+        
         if ($dateRange && $dateRange->getStart() && $dateRange->getEnd()) {
             if ($this->listingDefaultStatus == ListingAvailability::STATUS_AVAILABLE) {
                 //Get listings unavailable for searched dates
@@ -148,6 +151,7 @@ class ListingSearchManager
                 $duration = $dateRange->getDuration($this->endDayIncluded);
             } else {
                 $timeRange = $listingSearchRequest->getTimeRange();
+                
                 if ($timeRange && $timeRange->getStart()->format('H:i') !== $timeRange->getEnd()->format('H:i')
                     && ($timeRange->getStart()->format('H:i') != '00:00')
                 ) {
@@ -219,6 +223,33 @@ class ListingSearchManager
                     )
                 );
         }
+        
+        // names and number of people
+        $firstName = $listingSearchRequest->getFirstName();
+        if ($firstName) {
+            $queryBuilder
+                ->andWhere(
+                    "(u.firstName LIKE :first_name)"
+                )
+                ->setParameter('first_name', '%'.$firstName.'%');
+        }
+        $lastName = $listingSearchRequest->getlastName();
+        if ($lastName) {
+            $queryBuilder
+                ->andWhere(
+                    "(u.lastName LIKE :last_name)"
+                )
+                ->setParameter('last_name', '%'.$lastName.'%');
+        }
+        $numberOfPeople = $listingSearchRequest->getNumberOfPeople();
+        if ($numberOfPeople) {
+            $queryBuilder
+                ->andWhere(
+                    "(l.maxBookings >=:max_bookings)"
+                )
+                ->setParameter('max_bookings', $numberOfPeople);
+        }
+        
 
         //Order
         switch ($listingSearchRequest->getSortBy()) {
@@ -272,6 +303,8 @@ class ListingSearchManager
         $priceRange = null,
         $status
     ) {
+    	
+    	print_r($timeRange);
         $daysFlexibility = $flexibility ? $flexibility : 0;
 
         //Create first date range from flexibility days
