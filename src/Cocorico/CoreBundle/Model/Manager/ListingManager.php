@@ -119,6 +119,8 @@ class ListingManager extends BaseManager
      */
     public function refreshListingListingCharacteristics(Listing $listing)
     {
+//        var_dump(count($listing->getListingListingCharacteristics()));
+//        die;
         /** @var ListingCharacteristicRepository $listingCharacteristicRepository */
         $listingCharacteristicRepository = $this->em->getRepository('CocoricoCoreBundle:ListingCharacteristic');
 
@@ -128,16 +130,17 @@ class ListingManager extends BaseManager
         );
 
         //Remove characteristics already associated to listing
-        $listingListingCharacteristics = $listing->getListingListingCharacteristics();
-        foreach ($listingListingCharacteristics as $listingListingCharacteristic) {
-            $listingCharacteristics->removeElement($listingListingCharacteristic->getListingCharacteristic());
-        }
+//        $listingListingCharacteristics = $listing->getListingListingCharacteristics();
+//        foreach ($listingListingCharacteristics as $listingListingCharacteristic) {
+//            $listingCharacteristics->removeElement($listingListingCharacteristic->getListingCharacteristic());
+//        }
 
         //Associate new characteristics not already associated to listing
         foreach ($listingCharacteristics as $listingCharacteristic) {
             $listingListingCharacteristic = new ListingListingCharacteristic();
             $listingListingCharacteristic->setListing($listing);
             $listingListingCharacteristic->setListingCharacteristic($listingCharacteristic);
+//            $listingListingCharacteristic->setListingCharacteristicGroup($listing);
             $listingListingCharacteristic->setListingCharacteristicValue();
             $listing->addListingListingCharacteristic($listingListingCharacteristic);
         }

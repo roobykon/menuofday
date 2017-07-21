@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * ListingCharacteristicGroup
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Cocorico\CoreBundle\Repository\ListingCharacteristicGroupRepository")
  * @UniqueEntity("position", message="assert.unique")
  * @ORM\Table(name="listing_characteristic_group", indexes={
  *    @ORM\Index(name="position_lcg_idx", columns={"position"})

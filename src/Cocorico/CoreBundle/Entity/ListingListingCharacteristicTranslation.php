@@ -10,6 +10,7 @@ namespace Cocorico\CoreBundle\Entity;
 
 
 namespace Cocorico\CoreBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Component\Validator\Constraints as Assert;

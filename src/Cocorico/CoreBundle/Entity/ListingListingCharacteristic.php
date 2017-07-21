@@ -14,7 +14,7 @@ namespace Cocorico\CoreBundle\Entity;
 use Cocorico\CoreBundle\Model\BaseListingListingCharacteristic;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * ListingListingCharacteristic
  *
@@ -55,6 +55,7 @@ class ListingListingCharacteristic extends BaseListingListingCharacteristic
 
     /**
      * @ORM\ManyToOne(targetEntity="Cocorico\CoreBundle\Entity\ListingCharacteristicGroup", inversedBy="listingListingCharacteristics", fetch="EAGER")
+     * @Assert\NotBlank(message="assert.not_blank")
      * @ORM\JoinColumn(name="listing_listing_characteristic_group_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $listingCharacteristicGroup;
@@ -68,6 +69,7 @@ class ListingListingCharacteristic extends BaseListingListingCharacteristic
     private $dish_visibility;
     /**
      * @var string
+     * @Assert\NotBlank(message="assert.not_blank")
      * @ORM\Column(name="dish_photo", type="string", nullable=true)
      */
     private $dish_photo;

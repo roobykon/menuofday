@@ -26,20 +26,21 @@ class ListingEditCharacteristicType extends ListingEditType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
         $builder
             ->add(
                 'listingListingCharacteristicsOrderedByGroup',
                 'collection',
                 array(
-                    'type' => new ListingListingCharacteristicType($this->locale, $this->locales),
+                    'type' => new ListingListingCharacteristicType($this->locale, $this->locales, $this->em),
                     /** @Ignore */
                     'label' => false,
                     'prototype' => true,
                     'by_reference' => false,
-                    'allow_add' => true,
                     'allow_delete' => true,
-                    'cascade_validation' => true
+                    'cascade_validation' => true,
+                    'allow_extra_fields' => true,
+                    'mapped' => true,
+                    'max_length' =>  10
                 )
             );
 

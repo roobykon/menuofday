@@ -11,12 +11,10 @@
 
 namespace Cocorico\CoreBundle\Form\Type;
 
-use Cocorico\CoreBundle\Entity\ListingListingCharacteristic;
-use Cocorico\CoreBundle\Repository\ListingCharacteristicValueRepository;
+use Cocorico\CoreBundle\Repository\ListingCharacteristicGroupRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ListingListingCharacteristicType extends AbstractType
@@ -24,13 +22,20 @@ class ListingListingCharacteristicType extends AbstractType
     protected $locale;
 
     protected $locales;
+
+    /**
+     * @var EntityManager
+     */
+    protected $em;
+
     /**
      * @param   $locale
      */
-    public function __construct($locale, $locales = [])
+    public function __construct($locale, $locales = [], EntityManager $entityManager)
     {
         $this->locales = $locales;
         $this->locale = $locale;
+        $this->em = $entityManager;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -61,9 +66,38 @@ class ListingListingCharacteristicType extends AbstractType
                 )
             );
 
-//                $form->add('listing_characteristic_types', 'collection', array(
-//                    'required'   => true
-//                ));
+        /** @var ListingCharacteristicGroupRepository $characteristicsGroupRepository */
+        $characteristicsGroupRepository = $this->em->getRepository(
+            "CocoricoCoreBundle:ListingCharacteristicGroup"
+        );
+
+        $characteristicsGroups = $characteristicsGroupRepository->findAllTranslated($this->locale);
+
+        $builder->add(
+            'listingCharacteristicGroup',
+            'entity',
+            array(
+                'required' => false,
+                /** @Ignore */
+                'label' => false,
+                'choices' => $characteristicsGroupRepository->findAllTranslated($this->locale),
+                'class' => 'CocoricoCoreBundle:ListingCharacteristicGroup',
+                'cascade_validation' => true
+            )
+        );
+
+//        $builder->add('listingCharacteristicGroup', 'entity', array(
+//            'required'   => true,
+//            'query_builder' => function (ListingCharacteristicGroupRepository $lcgr) {
+//
+//                return $lcgr->getFindAllTranslatedQueryBuilder(
+//                    $this->locale
+//                );
+//            },
+//            'empty_value' => 'listing.form.characteristic.choose',
+//            'property' => 'translations[' . $this->locale . '].name',
+//            'class' => 'Cocorico\CoreBundle\Entity\ListingCharacteristicGroup',
+//        ));
 
         $builder->add('dish_visibility', 'checkbox', array(
             'required'   => false,
@@ -71,7 +105,8 @@ class ListingListingCharacteristicType extends AbstractType
         ));
 
         $builder->add('dish_photo', 'file', array(
-            'required'   => true
+            'required'   => true,
+            "data_class" => null
         ));
 
 //        $builder->addEventListener(
@@ -110,7 +145,7 @@ class ListingListingCharacteristicType extends AbstractType
             array(
                 'data_class' => 'Cocorico\CoreBundle\Entity\ListingListingCharacteristic',
                 'translation_domain' => 'cocorico_listing',
-//                'cascade_validation' => true
+                'cascade_validation' => true
             )
         );
     }
