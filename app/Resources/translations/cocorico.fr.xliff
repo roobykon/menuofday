@@ -146,7 +146,7 @@
       </trans-unit>
       <trans-unit id="5e1d2c2c71162e0c24eddb9cae78b0296d9f6425" resname="footer.all_right_reserved">
         <source>footer.all_right_reserved</source>
-        <target>tous droits réservés</target>
+        <target>Tous droits réservés à</target>
         <jms:reference-file line="106">Frontend/Common/_footer.html.twig</jms:reference-file>
         <jms:reference-file line="82">views/Mails/layout.html.twig</jms:reference-file>
       </trans-unit>
