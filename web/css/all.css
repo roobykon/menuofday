@@ -2232,12 +2232,19 @@ fieldset[disabled] .btn {
 
 .btn-default:hover,
 .btn-default:focus,
-.btn-default:active,
-.btn-default.active,
 .open .dropdown-toggle.btn-default {
     color: #ffffff;
     background-color: #6a8c14;
     border-color: rgba(0, 0, 0, 0);
+}
+
+.btn-default:active,
+.btn-default.active
+{
+    color: #ffffff;
+    background-color: #3e520a;
+    border-color: rgba(0, 0, 0, 0);
+    
 }
 
 .btn-default:active,
@@ -3569,14 +3576,14 @@ input[type="button"].btn-block {
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #c50000;
+    color: #6a8c14;
     background-color: transparent;
 }
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-    color: #c50000;
+    color: #3e520a;
     background-color: transparent;
 }
 
@@ -3609,7 +3616,7 @@ input[type="button"].btn-block {
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
     background-color: transparent;
-    color: #c50000;
+    color: #6a8c14;
 }
 
 @media (max-width: 767px) {
@@ -6165,8 +6172,8 @@ span.btn:focus {
 .infoarea {
     color: #58595b;
     line-height: 22px;
-    padding-bottom: 22px;
-    margin-top: 22px;
+    padding: 0 22px 22px;
+    margin-top: 122px;
 }
 
 .infoarea .info-box {
@@ -6175,8 +6182,6 @@ span.btn:focus {
 
 .infoarea .icon {
     margin: 0 22px 0 0;
-    background-color: #2f4f02;
-    border-radius: 50%;
 }
 
 .infoarea .textbox {
@@ -6209,13 +6214,13 @@ span.btn:focus {
 .bottom-container {
     color: #ffffff;
     /*background: #333435;*/
-    background: #142300;
+    background: #1f1f1f;
 }
 
 /* aside-footer */
 .aside-footer {
     /*background: #58595b;*/
-    background: #2f4f02;
+    background: #6a8c14;
     color: #f5f5f5;
     padding: 26px 0 21px;
     /* navarea */
@@ -6456,7 +6461,7 @@ span.btn:focus {
 }
 
 .listing-post .time-price {
-    float: left;
+    float: right;
     width: 70px;
     color: #58595b;
     font-size: 2rem;
@@ -6485,16 +6490,16 @@ span.btn:focus {
     top: 0;
     right: 0;
     z-index: 2;
-    width: 46px;
-    height: 46px;
+    width: 32px;
+    height: 32px;
     color: #e8e8e8;
     position: absolute;
     text-align: center;
     border-radius: 100%;
     background: #797979;
     margin: 20px 31px 0 0;
-    font-size: 26px;
-    line-height: 46px;
+    font-size: 18px;
+    line-height: 32px;
     text-decoration: none;
 }
 
@@ -6522,7 +6527,7 @@ span.btn:focus {
 
 .listing-post .post-content {
     overflow: hidden;
-    padding: 16px 18px;
+    padding: 3px 18px;
 }
 
 .listing-post .alignleft {
@@ -6534,6 +6539,8 @@ span.btn:focus {
 
 .listing-post .textbox {
     overflow: hidden;
+    float: left;
+    margin-left: 16px;
 }
 
 .listing-post h2 {
@@ -17746,17 +17753,24 @@ body.loading {
 {
     font-family: 'Oh Sweet Nuthin Regular';
     width: 100%;
-    font-size: 150px; /* todo: responsive */
+    font-size: 130px; /* todo: responsive */
     max-width: 100%;
     line-height: 100%;
     margin: 0 0 40px 0 !important;
     white-space: nowrap;
+    font-weight: normal;
+}
+
+.main-banner h2
+{
+    font-weight: normal;
+    text-transform: uppercase;
 }
 
 .bottom-page-wrapper
 {
     width: 100%;
-    background-color: #2f4f02;
+    background-color: #6a8c14;
 }
 .bottom-page
 {

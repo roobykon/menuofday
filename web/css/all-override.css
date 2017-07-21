@@ -884,8 +884,14 @@ li.time-fields {
 }
 
 #search-container .range-area {
-    width: 25%;
-    padding-top: 14px;
+    width: 20%;
+}
+
+#search-container .text-area
+{
+    width: 16%;
+    float: left;
+    padding: 5px;
 }
 
 #search-container .range-holder {
@@ -912,6 +918,12 @@ li.time-fields {
     float: none;
     width: 100%;
     margin: 0 0 10px 0;
+}
+
+#search-container .btn-default
+{
+    padding: 6px 14px 6px;
+    margin-top: 2px;
 }
 
 #categories, .multiselect .btn-group {
@@ -1096,7 +1108,7 @@ li.time-fields {
     color: #ffffff;
     text-decoration: none;
     outline: 0;
-    background-color: #afb8c0;
+    background-color: #6a8c14;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -1999,7 +2011,7 @@ ul.collection {
 }
 
 .listing-post .time-price {
-    width: 120px;
+    width: auto;
 }
 
 .main-tabs .listing-post .time-price {

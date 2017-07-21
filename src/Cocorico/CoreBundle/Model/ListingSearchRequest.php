@@ -44,6 +44,9 @@ class ListingSearchRequest implements TranslationContainerInterface
     //todo: decouple category fields and delivery
     protected $categoriesFields;
     protected $delivery;
+    protected $firstName;
+    protected $lastName;
+    protected $numberOfPeople;
 
     public static $sortByValues = array(
         'recommended' => 'listing.search.sort_by.recommended',
@@ -109,6 +112,21 @@ class ListingSearchRequest implements TranslationContainerInterface
         if ($delivery) {
             $this->delivery = $delivery;
         }
+        
+        $firstName = $this->request->query->get("first_name");
+        if ($firstName) {
+            $this->firstName = $firstName;
+        }
+        $lastName = $this->request->query->get("last_name");
+        if ($lastName) {
+            $this->lastName = $lastName;
+        }
+        $numberOfPeople = $this->request->query->get("number_of_people");
+        if ($numberOfPeople) {
+            $this->numberOfPeople = $numberOfPeople;
+        }
+        
+        
     }
 
     /**
@@ -386,6 +404,54 @@ class ListingSearchRequest implements TranslationContainerInterface
         $this->categoriesFields = $categoriesFields;
     }
 
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
+    
+    /**
+     * @return int
+     */
+    public function getNumberOfPeople()
+    {
+        return $this->numberOfPeople;
+    }
+
+    /**
+     * @param int $numberOfPeople
+     */
+    public function setNumberOfPeople($numberOfPeople)
+    {
+        $this->numberOfPeople = $numberOfPeople;
+    }
+    
 
     /**
      * Remove some Object properties while serialisation

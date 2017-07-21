@@ -11,6 +11,8 @@
 
 namespace Cocorico\CoreBundle\Form\Type\Frontend;
 
+use Symfony\Component\Form;
+
 use Cocorico\CoreBundle\Event\ListingSearchFormBuilderEvent;
 use Cocorico\CoreBundle\Event\ListingSearchFormEvents;
 use Cocorico\CoreBundle\Form\Type\PriceRangeType;
@@ -167,10 +169,10 @@ class ListingSearchResultType extends AbstractType
                 )
             );
 
-        //CHARACTERISTICS
-        $characteristics = $listingSearchRequest->getCharacteristics();
-        $builder
-            ->add(
+        //CHARACTERISTICS - removed
+        /*
+         $characteristics = $listingSearchRequest->getCharacteristics();
+         ->add(
                 'characteristics',
                 'listing_characteristic',
                 array(
@@ -178,6 +180,9 @@ class ListingSearchResultType extends AbstractType
                     'data' => $characteristics
                 )
             )
+
+         */
+        $builder
             ->add(
                 'sort_by',
                 'choice',
@@ -239,6 +244,30 @@ class ListingSearchResultType extends AbstractType
                 )
             );
         }
+        
+        $builder->add(
+                'first_name',
+                'text',
+                array(
+                    'label'=>'listing_search.form.first_name',
+                    'required' => false
+                )
+        )->add(
+                'last_name',
+                'text',
+                array(
+                    'label'=>'listing_search.form.last_name',
+                    'required' => false
+                )
+        )->add(
+                'number_of_people',
+                'text',
+                array(
+                    'label'=>'listing_search.form.number_of_people',
+                    'required' => false
+                )
+        );
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
