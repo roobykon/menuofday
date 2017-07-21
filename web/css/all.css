@@ -6036,7 +6036,7 @@ span.btn:focus {
 
 .range-holder .range-box {
     margin: 0 18px 0 0;
-    padding: 5px 15px 15px;
+    padding: 5px 20px 15px;
 }
 
 .range-holder .range-box:after {
@@ -6557,6 +6557,21 @@ span.btn:focus {
     color: #2f4f02;
     font-weight: 600;
 }
+
+.listing-post .textbox p {
+    margin: 0 0 0px;
+    line-height: 16px;
+    
+}
+.listing-post .textbox p.sub {
+    color: #1F1F1F;
+}
+
+.listing-post .textbox p:last-child
+{
+    margin: 0 0 5px;
+}
+
 
 .listing-post .info-btns {
     margin: 0;
@@ -17706,7 +17721,7 @@ body.loading {
 }
 
 .time-fields .jcf-select, .nb-days .jcf-select{
-  width: auto!important;
+  width: auto;
 }
 
 [id^="datetimepicker"] .jcf-select-text{

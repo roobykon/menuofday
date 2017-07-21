@@ -3,7 +3,7 @@
 <head>
     <title>
         {%- block meta_title -%}
-            {{ app.request.requestUri|slice(4)|replace({'/': " > ", '-': " ", '_': " "})|ucwords ~ " - " ~ cocorico_site_name }}
+            {{ app.request.requestUri|slice(4)|replace({'/': " > ", '-': " ", '_': " "})|ucwords }}
         {%- endblock -%}
     </title>
     <meta name="description" content="{%- block meta_description -%}{{ cocorico_short_description }}{%- endblock -%}">
