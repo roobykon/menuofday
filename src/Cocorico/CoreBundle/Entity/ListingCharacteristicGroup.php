@@ -55,13 +55,20 @@ class ListingCharacteristicGroup
      */
     private $listingCharacteristics;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="ListingListingCharacteristic", mappedBy="listingCharacteristicGroup", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"position" = "asc"})
+     */
+    private $listingListingCharacteristics;
+
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->listingCharacteristics = new ArrayCollection();
+        $this->listingListingCharacteristics = new ArrayCollection();
     }
 
     /**
@@ -111,43 +118,49 @@ class ListingCharacteristicGroup
 
 
     /**
-     * Add listingCharacteristics
+     * Add listingListingCharacteristics
      *
-     * @param  \Cocorico\CoreBundle\Entity\ListingCharacteristic $listingCharacteristics
-     * @return ListingCharacteristicType
+     * @param  \Cocorico\CoreBundle\Entity\ListingListingCharacteristic $listingListingCharacteristics
+     * @return ListingCharacteristicGroup
      */
-    public function addListingCharacteristic(ListingCharacteristic $listingCharacteristics)
+    public function addListingListingCharacteristic(ListingListingCharacteristic $listingListingCharacteristics)
     {
-        $this->listingCharacteristics[] = $listingCharacteristics;
+        $this->listingListingCharacteristics[] = $listingListingCharacteristics;
 
         return $this;
     }
 
     /**
-     * Remove listingCharacteristics
+     * Remove listingListingCharacteristics
      *
-     * @param \Cocorico\CoreBundle\Entity\ListingCharacteristic $listingCharacteristics
+     * @param \Cocorico\CoreBundle\Entity\ListingListingCharacteristic $listingListingCharacteristics
      */
-    public function removeListingCharacteristic(ListingCharacteristic $listingCharacteristics)
+    public function removeListingListingCharacteristic(ListingListingCharacteristic $listingListingCharacteristics)
     {
-        $this->listingCharacteristics->removeElement($listingCharacteristics);
+        $this->listingListingCharacteristics->removeElement($listingListingCharacteristics);
     }
 
     /**
-     * Get listingCharacteristics
+     * Get listingListingCharacteristics
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getListingCharacteristics()
+    public function getListingListingCharacteristics()
     {
-        return $this->listingCharacteristics;
+        return $this->listingListingCharacteristics;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->translate()->getName();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->translate()->getName();

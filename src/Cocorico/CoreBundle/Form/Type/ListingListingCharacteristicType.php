@@ -23,42 +23,81 @@ class ListingListingCharacteristicType extends AbstractType
 {
     protected $locale;
 
+    protected $locales;
     /**
      * @param   $locale
      */
-    public function __construct($locale)
+    public function __construct($locale, $locales = [])
     {
+        $this->locales = $locales;
         $this->locale = $locale;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->addEventListener(
-            FormEvents::PRE_SET_DATA,
-            function (FormEvent $event) {
-                $form = $event->getForm();
-                /** @var ListingListingCharacteristic $llc */
-                $llc = $event->getData();
+        $titles = array();
+        foreach ($this->locales as $i => $locale) {
+            $titles[$locale] = array(
+                /** @Ignore */
+                'label' => "listing.form.title.$locale"
+            );
+        }
 
-                $form->add(
-                    'listingCharacteristicValue',
-                    'entity',
-                    array(
-                        'query_builder' => function (ListingCharacteristicValueRepository $lcvr) use ($llc) {
-                            $lct = $llc->getListingCharacteristic()->getListingCharacteristicType();
+        $builder
+            ->add(
+                'translations',
+                'a2lix_translations',
+                array(
+                    'required_locales' => array($this->locale),
+                    'fields' => array(
+                        'title' => array(
+                            'field_type' => 'text',
+                            'required'   => true,
+                            'locale_options' => $titles
+                        )
+                    ),
+                    /** @Ignore */
+                    'label' => false
+                )
+            );
 
-                            return $lcvr->getFindAllTranslatedQueryBuilder(
-                                $lct,
-                                $this->locale
-                            );
-                        },
-                        'empty_value' => 'listing.form.characteristic.choose',
-                        'property' => 'translations[' . $this->locale . '].name',
-                        'class' => 'Cocorico\CoreBundle\Entity\ListingCharacteristicValue',
-                    )
-                );
-            }
-        );
+//                $form->add('listing_characteristic_types', 'collection', array(
+//                    'required'   => true
+//                ));
+
+        $builder->add('dish_visibility', 'checkbox', array(
+            'required'   => false,
+            'attr' => ['checked' => 'checked']
+        ));
+
+        $builder->add('dish_photo', 'file', array(
+            'required'   => true
+        ));
+
+//        $builder->addEventListener(
+//            FormEvents::PRE_SET_DATA,
+//            function (FormEvent $event) {
+//                $form = $event->getForm();
+
+//                $form->add(
+//                    'listingCharacteristicValue',
+//                    'entity',
+//                    array(
+//                        'query_builder' => function (ListingCharacteristicValueRepository $lcvr) use ($llc) {
+//                            $lct = $llc->getListingCharacteristic()->getListingCharacteristicType();
+//
+//                            return $lcvr->getFindAllTranslatedQueryBuilder(
+//                                $lct,
+//                                $this->locale
+//                            );
+//                        },
+//                        'empty_value' => 'listing.form.characteristic.choose',
+//                        'property' => 'translations[' . $this->locale . '].name',
+//                        'class' => 'Cocorico\CoreBundle\Entity\ListingCharacteristicValue',
+//                    )
+//                );
+//            }
+//        );
     }
 
     /**
@@ -66,10 +105,12 @@ class ListingListingCharacteristicType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
         $resolver->setDefaults(
             array(
                 'data_class' => 'Cocorico\CoreBundle\Entity\ListingListingCharacteristic',
-                'translation_domain' => 'cocorico_listing'
+                'translation_domain' => 'cocorico_listing',
+//                'cascade_validation' => true
             )
         );
     }

@@ -53,6 +53,12 @@ class ListingListingCharacteristic extends BaseListingListingCharacteristic
      */
     private $listingCharacteristicValue;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Cocorico\CoreBundle\Entity\ListingCharacteristicGroup", inversedBy="listingListingCharacteristics", fetch="EAGER")
+     * @ORM\JoinColumn(name="listing_listing_characteristic_group_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
+     */
+    private $listingCharacteristicGroup;
+
 
     /**
      * @var boolean
@@ -132,6 +138,28 @@ class ListingListingCharacteristic extends BaseListingListingCharacteristic
         $this->listingCharacteristicValue = $listingCharacteristicValue;
     }
 
+    /**
+     * Set ListingCharacteristicGroup
+     *
+     * @param  \Cocorico\CoreBundle\Entity\ListingCharacteristicGroup $listingCharacteristicGroup
+     * @return ListingCharacteristic
+     */
+    public function setListingCharacteristicGroup(ListingCharacteristicGroup $listingCharacteristicGroup)
+    {
+        $this->listingCharacteristicGroup = $listingCharacteristicGroup;
+
+        return $this;
+    }
+
+    /**
+     * Get ListingCharacteristicGroup
+     *
+     * @return \Cocorico\CoreBundle\Entity\ListingCharacteristicGroup
+     */
+    public function getListingCharacteristicGroup()
+    {
+        return $this->listingCharacteristicGroup;
+    }
 
     public function getTitle()
     {

@@ -1,33 +1,52 @@
+{% extends 'CocoricoCoreBundle:Dashboard/Listing:layout.html.twig' %}
+
 {% trans_default_domain 'cocorico_listing' %}
 
-<div id="discount-form-container">
-    {% if app.request.isXmlHttpRequest %}
-        {% include 'CocoricoCoreBundle:Frontend/Common:_flash.html.twig' %}
-    {% endif %}
+{% block nav_side_dashboard -%}
+    {% set nav_side_dashboard_current = 'characteristic' %}
+    {{ parent() }}
+{%- endblock %}
 
-    {{ form_start(form) }}
+{% block content_dashboard -%}
+    <fieldset>
+        <legend class="hidden">form area</legend>
+        <div id="dishes-form-container">
+            <div class="collection">
+                {% if app.request.isXmlHttpRequest %}
+                    {% include 'CocoricoCoreBundle:Frontend/Common:_flash.html.twig' %}
+                {% endif %}
 
-    {{ form_errors(form) }}
-    {{ form_widget(form.discounts) }}
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
 
-    <div class="btn-block text-center">
-        <button type="submit" class="btn btn-default">{{ 'listing.price_save'|trans }}</button>
-    </div>
-    {{ form_end(form) }}
+                {% for listingListingCharacteristic in form.listingListingCharacteristicsOrderedByGroup %}
+                    {{ form_widget(listingListingCharacteristic.translations) }}
+                {% endfor %}
 
+                <div class="btn-block text-center">
+                    <button type="submit" class="btn btn-default">{{ 'listing.price_save'|trans }}</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </fieldset>
+{%- endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
     <script>
         $(function () {
-            var $formContainer = $("#discount-form-container");
+            var $formContainer = $("#listing_listingListingCharacteristicsOrderedByGroup");
             $formContainer.submitAjaxForm(function () {
-                jcf.replaceAll("#discount-form-container");
+                jcf.replaceAll("#listing_listingListingCharacteristicsOrderedByGroup");
             });
 
-            $formContainer.addFormToCollection("div.collection", "ul", function () {
+            $formContainer.addFormToCollection("ul.collection", "ul", function () {
 
             });
         });
     </script>
-</div>
 
+{%- endblock %}
 
 
