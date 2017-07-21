@@ -460,7 +460,7 @@
 
                             </ul>
                         </section>
-                        {% if current_user and current_user.hasBooking(listing)%}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') and current_user.hasBooking(listing)%}
                             <section class="widget members-list">
                                 <ul class="info-list">
                                     <li><i class="icon-location"></i>
