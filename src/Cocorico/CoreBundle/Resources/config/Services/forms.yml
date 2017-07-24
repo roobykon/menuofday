@@ -58,6 +58,8 @@ services:
     cocorico.form.type.listing_edit_characteristic:
         class: Cocorico\CoreBundle\Form\Type\Dashboard\ListingEditCharacteristicType
         parent: cocorico.form.type.listing_edit
+        arguments:
+          - "@doctrine.orm.entity_manager"
         tags:
             - { name: form.type, alias: listing_edit_characteristic }
 

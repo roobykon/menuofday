@@ -31,11 +31,20 @@ class ListingEditCharacteristicType extends ListingEditType
                 'listingListingCharacteristicsOrderedByGroup',
                 'collection',
                 array(
-                    'type' => new ListingListingCharacteristicType($this->locale),
+                    'type' => new ListingListingCharacteristicType($this->locale, $this->locales, $this->em),
                     /** @Ignore */
-                    'label' => false
+                    'label' => false,
+                    'prototype' => true,
+                    'by_reference' => false,
+                    'allow_delete' => true,
+                    'cascade_validation' => true,
+                    'allow_extra_fields' => true,
+                    'mapped' => true,
+                    'max_length' =>  10
                 )
             );
+
+
 
         //Add new ListingCharacteristics eventually not already attached to listing
         $builder->addEventListener(
@@ -43,6 +52,7 @@ class ListingEditCharacteristicType extends ListingEditType
             function (FormEvent $event) {
                 /** @var Listing $listing */
                 $listing = $event->getData();
+                $form = $event->getForm();
                 $listing = $this->lem->refreshListingListingCharacteristics($listing);
                 $event->setData($listing);
             }
@@ -53,6 +63,13 @@ class ListingEditCharacteristicType extends ListingEditType
     public function configureOptions(OptionsResolver $resolver)
     {
         parent::configureOptions($resolver);
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'Cocorico\CoreBundle\Entity\Listing',
+                'translation_domain' => 'cocorico_listing',
+                'cascade_validation' => true,//To have error on collection item field
+            )
+        );
     }
 
     /**

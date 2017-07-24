@@ -65,7 +65,8 @@ class ListingCharacteristicController extends Controller
         }
 
         return $this->render(
-            'CocoricoCoreBundle:Dashboard/Listing:edit_characteristic.html.twig',
+//            'CocoricoCoreBundle:Dashboard/Listing:edit_characteristic.html.twig',
+            'CocoricoCoreBundle:Dashboard/Listing:form_listing_dish.html.twig',
             array(
                 'listing' => $listing,
                 'form' => $editForm->createView()
