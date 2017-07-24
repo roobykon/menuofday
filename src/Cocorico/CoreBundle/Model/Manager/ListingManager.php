@@ -101,15 +101,15 @@ class ListingManager extends BaseManager
             }
         }
 
-        if($listing->getListingListingCharacteristics()){
-            foreach ($listing->getListingListingCharacteristics() as $dish){
-                $file = $dish->getDishPhoto();
-                if(!empty($file) && $file instanceof UploadedFile){
-                    $this->saveListingCharacteristicImage($file);
-                }
-            }
-            die;
-        }
+//        if($listing->getListingListingCharacteristics()){
+//            foreach ($listing->getListingListingCharacteristics() as $dish){
+//                $file = $dish->getDishPhoto();
+//                if(!empty($file) && $file instanceof UploadedFile){
+//                    $this->saveListingCharacteristicImage($file);
+//                }
+//            }
+//            die;
+//        }
 
         $this->em->flush();
         $this->em->refresh($listing);
@@ -194,29 +194,29 @@ class ListingManager extends BaseManager
         return $listing;
     }
 
-    /**
-     * @param $file Symfony\Component\HttpFoundation\File\UploadedFile $file
-     * @return
-     */
-    public function saveListingCharacteristicImage($file)
-    {
-        $distanationPath = ''
-        $fileName = md5(uniqid()).'.'.$file->guessExtension();
-
-        // Move the file to the directory where brochures are stored
-        $file->move(
-            $this->getParameter('brochures_directory'),
-            $fileName
-        );
-
-        // Update the 'brochure' property to store the PDF file name
-        // instead of its contents
-        $product->setBrochure($fileName);
-
-        // ... persist the $product variable or any other work
-
-        return $this->redirect($this->generateUrl('app_product_list'));
-    }
+//    /**
+//     * @param $file Symfony\Component\HttpFoundation\File\UploadedFile $file
+//     * @return
+//     */
+//    public function saveListingCharacteristicImage($file)
+//    {
+//        $distanationPath = ''
+//        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+//
+//        // Move the file to the directory where brochures are stored
+//        $file->move(
+//            $this->getParameter('brochures_directory'),
+//            $fileName
+//        );
+//
+//        // Update the 'brochure' property to store the PDF file name
+//        // instead of its contents
+//        $product->setBrochure($fileName);
+//
+//        // ... persist the $product variable or any other work
+//
+//        return $this->redirect($this->generateUrl('app_product_list'));
+//    }
 
     /**
      * Create categories and field values while listing deposit.
