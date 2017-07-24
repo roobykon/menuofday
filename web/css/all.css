@@ -6212,19 +6212,20 @@ span.btn:focus {
 
 /* bottom-container */
 .bottom-container {
-    color: #ffffff;
+    color: #1f1f1f;
     /*background: #333435;*/
-    background: #1f1f1f;
+    background: #ffffff;
 }
 
 /* aside-footer */
 .aside-footer {
     /*background: #58595b;*/
-    background: #6a8c14;
+    background: #fffff;
     color: #f5f5f5;
     padding: 26px 0 21px;
     /* navarea */
     /* contact-info */
+    box-shadow: 0px -5px 16px 0px rgba(0, 0, 0, 0.05);
 }
 
 .aside-footer .navarea {
@@ -6242,7 +6243,7 @@ span.btn:focus {
 }
 
 .aside-footer .navarea ul li a {
-    color: #f5f5f5;
+    color: #1f1f1f;
     text-decoration: none;
 }
 
@@ -6251,7 +6252,7 @@ span.btn:focus {
 }
 
 .aside-footer .contact-info {
-    color: #ffffff;
+    color: #1f1f1f;
     width: 254px;
     line-height: 17px;
 }
@@ -6260,9 +6261,16 @@ span.btn:focus {
     margin: 9px 0 0;
 }
 
+.aside-footer li.underline
+{
+    width: 38px;
+    height: 2px;
+    background-color: #7cb32a;
+}
+
 .aside-footer .contact-info a,
 .aside-footer .contact-info address {
-    color: #ffffff;
+    color: #1f1f1f;
     text-decoration: none;
 }
 
@@ -6304,6 +6312,7 @@ span.btn:focus {
     padding-bottom: 11px;
     font-size: 13px;
     line-height: 16px;
+    border-top: 1px solid #1f1f1f;
 }
 
 #footer p {
@@ -6312,7 +6321,7 @@ span.btn:focus {
 }
 
 #footer a {
-    color: #ffffff;
+    color: #1f1f1f;
     text-decoration: none;
 }
 

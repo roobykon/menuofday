@@ -2,10 +2,12 @@
 
 <!-- bottom-container -->
 <div class="bottom-container">
+    <!--
     <div class="bottom-page-wrapper">
         <div class="container bottom-page">
         </div>
     </div>
+    -->
     <!-- footer-aside -->
     <aside class="aside-footer">
         <div class="container">
@@ -15,6 +17,7 @@
                     <div class="contact-info pull-right">
                         <strong class="title">{{ 'footer.contact_us.title'|trans }}</strong>
                         <ul class="list-unstyled">
+                            <li class="underline"></li>
                             <li>
                                 <address><i class="icon-location"></i>{{ cocorico_address }}</address>
                             </li>
@@ -34,7 +37,9 @@
                     <!-- navarea -->
                     <nav class="navarea">
                         <ul class="list-unstyled pull-left">
+                            
                             <li class="title">{{ 'footer.about.title'|trans }}</li>
+                            <li class="underline"></li>
                             <li>
                                 <a href="{{ path('cocorico_page_show', { 'slug': 'nav.who_we_are.slug'|trans }) }}">
                                     {{ 'footer.who_we_are.link'|trans }}
@@ -52,7 +57,9 @@
                             </li>
                         </ul>
                         <ul class="list-unstyled pull-left">
+                            
                             <li class="title">{{ 'footer.help.title'|trans }}</li>
+                            <li class="underline"></li>
                             <li>
                                 <a href="{{ path('cocorico_page_show', { 'slug': 'nav.faq.slug'|trans }) }}">
                                     {{ 'footer.faq.link'|trans }}
