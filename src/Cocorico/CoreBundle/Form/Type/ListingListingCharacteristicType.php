@@ -71,33 +71,17 @@ class ListingListingCharacteristicType extends AbstractType
             "CocoricoCoreBundle:ListingCharacteristicGroup"
         );
 
-        $characteristicsGroups = $characteristicsGroupRepository->findAllTranslated($this->locale);
-
         $builder->add(
             'listingCharacteristicGroup',
             'entity',
             array(
                 'required' => false,
                 /** @Ignore */
-                'label' => false,
                 'choices' => $characteristicsGroupRepository->findAllTranslated($this->locale),
                 'class' => 'CocoricoCoreBundle:ListingCharacteristicGroup',
                 'cascade_validation' => true
             )
         );
-
-//        $builder->add('listingCharacteristicGroup', 'entity', array(
-//            'required'   => true,
-//            'query_builder' => function (ListingCharacteristicGroupRepository $lcgr) {
-//
-//                return $lcgr->getFindAllTranslatedQueryBuilder(
-//                    $this->locale
-//                );
-//            },
-//            'empty_value' => 'listing.form.characteristic.choose',
-//            'property' => 'translations[' . $this->locale . '].name',
-//            'class' => 'Cocorico\CoreBundle\Entity\ListingCharacteristicGroup',
-//        ));
 
         $builder->add('dish_visibility', 'checkbox', array(
             'required'   => false,
@@ -109,30 +93,6 @@ class ListingListingCharacteristicType extends AbstractType
             "data_class" => null
         ));
 
-//        $builder->addEventListener(
-//            FormEvents::PRE_SET_DATA,
-//            function (FormEvent $event) {
-//                $form = $event->getForm();
-
-//                $form->add(
-//                    'listingCharacteristicValue',
-//                    'entity',
-//                    array(
-//                        'query_builder' => function (ListingCharacteristicValueRepository $lcvr) use ($llc) {
-//                            $lct = $llc->getListingCharacteristic()->getListingCharacteristicType();
-//
-//                            return $lcvr->getFindAllTranslatedQueryBuilder(
-//                                $lct,
-//                                $this->locale
-//                            );
-//                        },
-//                        'empty_value' => 'listing.form.characteristic.choose',
-//                        'property' => 'translations[' . $this->locale . '].name',
-//                        'class' => 'Cocorico\CoreBundle\Entity\ListingCharacteristicValue',
-//                    )
-//                );
-//            }
-//        );
     }
 
     /**
@@ -145,7 +105,8 @@ class ListingListingCharacteristicType extends AbstractType
             array(
                 'data_class' => 'Cocorico\CoreBundle\Entity\ListingListingCharacteristic',
                 'translation_domain' => 'cocorico_listing',
-                'cascade_validation' => true
+                'cascade_validation' => true,
+                'allow_delete' => true
             )
         );
     }
