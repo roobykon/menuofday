@@ -27,6 +27,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
@@ -98,6 +99,16 @@ class ListingManager extends BaseManager
                 $option->mergeNewTranslations();
                 $this->persistAndFlush($option);
             }
+        }
+
+        if($listing->getListingListingCharacteristics()){
+            foreach ($listing->getListingListingCharacteristics() as $dish){
+                $file = $dish->getDishPhoto();
+                if(!empty($file) && $file instanceof UploadedFile){
+                    $this->saveListingCharacteristicImage($file);
+                }
+            }
+            die;
         }
 
         $this->em->flush();
@@ -181,6 +192,30 @@ class ListingManager extends BaseManager
         }
 
         return $listing;
+    }
+
+    /**
+     * @param $file Symfony\Component\HttpFoundation\File\UploadedFile $file
+     * @return
+     */
+    public function saveListingCharacteristicImage($file)
+    {
+        $distanationPath = ''
+        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+        // Move the file to the directory where brochures are stored
+        $file->move(
+            $this->getParameter('brochures_directory'),
+            $fileName
+        );
+
+        // Update the 'brochure' property to store the PDF file name
+        // instead of its contents
+        $product->setBrochure($fileName);
+
+        // ... persist the $product variable or any other work
+
+        return $this->redirect($this->generateUrl('app_product_list'));
     }
 
     /**
