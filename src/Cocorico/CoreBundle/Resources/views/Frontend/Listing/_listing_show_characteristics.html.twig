@@ -9,7 +9,7 @@
         {% set listingCharacteristicGroup =  listingCharacteristic.listingCharacteristicGroup.getName() %}
         {% set listingCharacteristicValue = characteristic.listingCharacteristicValue %}
 
-        {% if listingCharacteristicValue %}
+        {#{% if listingCharacteristicValue %}#}
             {% if listingCharacteristicGroup != previousListingCharacteristicGroup %}
                 {% if previousListingCharacteristicGroup %}
                     {{ "</ul>" }}
@@ -19,14 +19,24 @@
             {% endif %}
 
             <li>
-                {{ listingCharacteristic.getName() }} :
-                <strong>{{ listingCharacteristicValue.getName() }}</strong>
                 {% if listingCharacteristic.getDescription() %}
-                    <button title="" data-original-title="{{ listingCharacteristic.getDescription() }}" data-placement="right" data-toggle="tooltip" class="tooltip-button" type="button">?</button>
+                    <button title="" data-original-title="{{ "<img style='max-width:550px;max-height:550px' src='" ~ characteristic.getDishPhoto() ~ "'/>" }}" data-placement="right" data-toggle="tooltip" class="tooltip-button" type="button">?</button>
                 {% endif %}
+                {#{{ listingCharacteristic.getName() }} :#}
+                <strong>{{ characteristic.getTitle() }}</strong>
             </li>
             {% set previousListingCharacteristicGroup =  listingCharacteristicGroup %}
-        {% endif %}
+        {#{% endif %}#}
     {% endfor %}
     <!--@formatter:on-->
 </div>
+{% block javascripts %}
+    <script>
+        $(document).ready(function() {
+            $('button[data-toggle="tooltip"]').tooltip({
+                animated:  'fade',
+                html:      true
+            });
+        });
+    </script>
+{%- endblock %}

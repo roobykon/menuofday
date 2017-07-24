@@ -13,6 +13,17 @@ imports:
     - { resource: @CocoricoCoreBundle/Resources/config/Services/subscribers.yml }
 
 services:
+    cocorico.characteristic_image_manager:
+        class: Cocorico\CoreBundle\Model\Manager\CharacteristicImageManager
+        arguments:
+          - '%characteristic_image_directory%'
+          - '@service_container'
+    app.characteristic_image_upload_listner:
+        class: Cocorico\CoreBundle\Listener\CharacteristicImageUploadListener
+        arguments: ['@cocorico.characteristic_image_manager']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
     #Custom classes
     cocorico.listing_search_request:
         class: Cocorico\CoreBundle\Model\ListingSearchRequest

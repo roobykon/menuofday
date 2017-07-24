@@ -54,6 +54,7 @@ class ListingCharacteristicController extends Controller
             )
         );
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
             $this->get("cocorico.listing.manager")->save($listing);
 
             $this->get('session')->getFlashBag()->add(

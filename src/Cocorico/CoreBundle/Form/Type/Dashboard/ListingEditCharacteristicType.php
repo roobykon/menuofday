@@ -37,6 +37,7 @@ class ListingEditCharacteristicType extends ListingEditType
                     'prototype' => true,
                     'by_reference' => false,
                     'allow_delete' => true,
+                    'allow_add' => true,
                     'cascade_validation' => true,
                     'allow_extra_fields' => true,
                     'mapped' => true,
