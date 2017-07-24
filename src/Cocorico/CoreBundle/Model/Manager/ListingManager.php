@@ -27,6 +27,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
@@ -100,6 +101,16 @@ class ListingManager extends BaseManager
             }
         }
 
+//        if($listing->getListingListingCharacteristics()){
+//            foreach ($listing->getListingListingCharacteristics() as $dish){
+//                $file = $dish->getDishPhoto();
+//                if(!empty($file) && $file instanceof UploadedFile){
+//                    $this->saveListingCharacteristicImage($file);
+//                }
+//            }
+//            die;
+//        }
+
         $this->em->flush();
         $this->em->refresh($listing);
 
@@ -119,6 +130,8 @@ class ListingManager extends BaseManager
      */
     public function refreshListingListingCharacteristics(Listing $listing)
     {
+//        var_dump(count($listing->getListingListingCharacteristics()));
+//        die;
         /** @var ListingCharacteristicRepository $listingCharacteristicRepository */
         $listingCharacteristicRepository = $this->em->getRepository('CocoricoCoreBundle:ListingCharacteristic');
 
@@ -128,16 +141,17 @@ class ListingManager extends BaseManager
         );
 
         //Remove characteristics already associated to listing
-        $listingListingCharacteristics = $listing->getListingListingCharacteristics();
-        foreach ($listingListingCharacteristics as $listingListingCharacteristic) {
-            $listingCharacteristics->removeElement($listingListingCharacteristic->getListingCharacteristic());
-        }
+//        $listingListingCharacteristics = $listing->getListingListingCharacteristics();
+//        foreach ($listingListingCharacteristics as $listingListingCharacteristic) {
+//            $listingCharacteristics->removeElement($listingListingCharacteristic->getListingCharacteristic());
+//        }
 
         //Associate new characteristics not already associated to listing
         foreach ($listingCharacteristics as $listingCharacteristic) {
             $listingListingCharacteristic = new ListingListingCharacteristic();
             $listingListingCharacteristic->setListing($listing);
             $listingListingCharacteristic->setListingCharacteristic($listingCharacteristic);
+//            $listingListingCharacteristic->setListingCharacteristicGroup($listing);
             $listingListingCharacteristic->setListingCharacteristicValue();
             $listing->addListingListingCharacteristic($listingListingCharacteristic);
         }
@@ -179,6 +193,30 @@ class ListingManager extends BaseManager
 
         return $listing;
     }
+
+//    /**
+//     * @param $file Symfony\Component\HttpFoundation\File\UploadedFile $file
+//     * @return
+//     */
+//    public function saveListingCharacteristicImage($file)
+//    {
+//        $distanationPath = ''
+//        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+//
+//        // Move the file to the directory where brochures are stored
+//        $file->move(
+//            $this->getParameter('brochures_directory'),
+//            $fileName
+//        );
+//
+//        // Update the 'brochure' property to store the PDF file name
+//        // instead of its contents
+//        $product->setBrochure($fileName);
+//
+//        // ... persist the $product variable or any other work
+//
+//        return $this->redirect($this->generateUrl('app_product_list'));
+//    }
 
     /**
      * Create categories and field values while listing deposit.

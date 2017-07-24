@@ -14,6 +14,7 @@ namespace Cocorico\CoreBundle\Form\Type\Dashboard;
 use Cocorico\CoreBundle\Entity\Listing;
 use Cocorico\CoreBundle\Model\Manager\ListingManager;
 use Cocorico\UserBundle\Entity\User;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -36,19 +37,22 @@ class ListingEditType extends AbstractType
      * @param array          $locales
      * @param ListingManager $lem
      * @param int            $timeUnit
+     * @param EntityManager  $em
      */
     public function __construct(
         TokenStorage $securityTokenStorage,
         RequestStack $requestStack,
         $locales,
         ListingManager $lem,
-        $timeUnit
+        $timeUnit,
+        EntityManager $em = null
     ) {
         $this->securityTokenStorage = $securityTokenStorage;
         $this->request = $requestStack->getCurrentRequest();
         $this->locale = $this->request->getLocale();
         $this->locales = $locales;
         $this->lem = $lem;
+        $this->em = $em;
         $this->timeUnit = $timeUnit;
         $this->timeUnitIsDay = ($timeUnit % 1440 == 0) ? true : false;
     }
