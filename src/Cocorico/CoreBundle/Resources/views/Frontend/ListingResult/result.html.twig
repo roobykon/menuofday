@@ -7,7 +7,7 @@
 {# SEO #}
 {% set seo_title = 'listing.search.result.title'|trans({'%listing_search_request%': location.address }) %}
 {% set seo_desc = '' %}
-{% set seo_meta_tile = 'listing.search.result.meta_title'|trans({'%listing_search_request%': location.address }, 'cocorico_meta') ~ " - " ~ cocorico_site_name %}
+{% set seo_meta_tile = 'listing.search.result.meta_title'|trans({'%listing_search_request%': location.address }, 'cocorico_meta') %}
 {% set seo_meta_desc = 'listing.search.result.meta_desc'|trans({'%nb_results%': nb_results}, 'cocorico_meta') %}
 
 {% if seo_content|default(null) %}
@@ -159,7 +159,7 @@
                                                 <h2>{{ listing_translation.title }}</h2>
 
                                                 <p>{{ listing_location["city"] }} </p>
-                                                <p>
+                                                <p class="sub">
                                                     {{ vatInclusionText(app.request.getLocale()) }}
                                                         / {{ (0)|add_time_unit_text }}
                                                 </p>

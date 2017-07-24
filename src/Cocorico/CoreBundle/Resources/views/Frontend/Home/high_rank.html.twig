@@ -67,7 +67,7 @@
                                             <div class="textbox">
                                                 <h2>{{ listing_translation.title }}</h2>
                                                 <p>{{ listing_location.city }} </p>
-                                                <p>{{ vatInclusionText(app.request.getLocale()) }}/ {{ (0)|add_time_unit_text }}</p>
+                                                <p  class="sub">{{ vatInclusionText(app.request.getLocale()) }}/ {{ (0)|add_time_unit_text }}</p>
                                             </div>
                                             <div class="time-price">
                                                 <strong class="price">{{ price }}</strong>

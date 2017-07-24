@@ -61,15 +61,15 @@
                             {{ form_widget(form.weekdays) }}
 
 
-                            {% if ( not timeUnitIsDay ) %}
-                                <h4>{{ 'listing.edit.calendar.choose_times.title'|trans }}</h4>
+                            {#{% if ( not timeUnitIsDay ) %}#}
+                                {#<h4>{{ 'listing.edit.calendar.choose_times.title'|trans }}</h4>#}
 
-                                <div class="time-ranges collection-dib">
-                                    {{ form_errors(form.time_ranges) }}
-                                    {{ form_label(form.time_ranges) }}
-                                    {{ form_widget(form.time_ranges) }}
-                                </div>
-                            {% endif %}
+                                {#<div class="time-ranges collection-dib">#}
+                                    {#{{ form_errors(form.time_ranges) }}#}
+                                    {#{{ form_label(form.time_ranges) }}#}
+                                    {#{{ form_widget(form.time_ranges) }}#}
+                                {#</div>#}
+                            {#{% endif %}#}
 
                             <div class="location">
                                 {{ form_errors(form.status) }}

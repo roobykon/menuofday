@@ -11,7 +11,7 @@
 {% set listing_user = listing.user %}
 
 {%- block meta_title -%}
-    {{ 'listing.show.meta_title'|trans({}, 'cocorico_meta') ~ " " ~ listing_translation.title ~ " - " ~ listing_location.city ~ " - " ~ listing.priceDecimal ~ " " ~ currencySymbol(currentCurrency) ~ "/" ~  0|add_time_unit_text ~ " - " ~ cocorico_site_name }} }}
+    {{ 'listing.show.meta_title'|trans({}, 'cocorico_meta') ~ " " ~ listing_translation.title ~ " - " ~ listing_location.city ~ " - " ~ listing.priceDecimal ~ " " ~ currencySymbol(currentCurrency) ~ "/" ~  0|add_time_unit_text }} }}
 {%- endblock -%}
 
 {%- block meta_description -%}
@@ -460,7 +460,7 @@
 
                             </ul>
                         </section>
-                        {% if current_user and current_user.hasBooking(listing)%}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') and current_user.hasBooking(listing)%}
                             <section class="widget members-list">
                                 <ul class="info-list">
                                     <li><i class="icon-location"></i>
