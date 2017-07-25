@@ -204,7 +204,7 @@ class BookingManager extends BaseManager
             false
         );
         //echo "nb listingAvailabilities" . $listingAvailabilities->count() . "<br>";
-
+        
         $bookingDuration = $booking->getDuration($this->endDayIncluded, $this->timeUnit);
 
         //echo "bookingDuration" . $bookingDuration . "<br>";
@@ -326,6 +326,9 @@ class BookingManager extends BaseManager
                  * Fees are taken on options amount
                  *
                  */
+            	
+            	$people = $booking->getNumberOfPeople();
+            	$amount *= $people;
                 if ($this->optionIsEnabled() && $booking->getOptions()) {
                     $amountOptions = $this->optionManager->getBookingOptionsAmount($booking);
                     $booking->setAmountOptions($amountOptions);
