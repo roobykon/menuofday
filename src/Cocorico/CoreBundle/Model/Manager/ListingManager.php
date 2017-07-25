@@ -88,6 +88,7 @@ class ListingManager extends BaseManager
                 $listingPublished = true;
             }
         }
+
         $listing->mergeNewTranslations();
         $this->persistAndFlush($listing);
 

@@ -185,7 +185,7 @@ class ListingListingCharacteristic extends BaseListingListingCharacteristic
     
     public function setDishPhoto($dish_photo)
     {
-        $this->dish_photo = $dish_photo ?  $dish_photo : '/images/img9.png';
+        if($dish_photo !== null) $this->dish_photo = $dish_photo;
         return $this;
     }
 
