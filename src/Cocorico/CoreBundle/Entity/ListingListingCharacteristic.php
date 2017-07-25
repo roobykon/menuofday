@@ -69,7 +69,6 @@ class ListingListingCharacteristic extends BaseListingListingCharacteristic
     private $dish_visibility;
     /**
      * @var string
-     * @Assert\NotBlank(message="assert.not_blank")
      * @ORM\Column(name="dish_photo", type="string", nullable=true)
      */
     private $dish_photo;
@@ -181,12 +180,12 @@ class ListingListingCharacteristic extends BaseListingListingCharacteristic
 
     public function getDishPhoto()
     {
-        return $this->dish_photo;
+        return $this->dish_photo ?  $this->dish_photo : '/images/img9.png';
     }
     
     public function setDishPhoto($dish_photo)
     {
-        $this->dish_photo = $dish_photo;
+        $this->dish_photo = $dish_photo ?  $dish_photo : '/images/img9.png';
         return $this;
     }
 

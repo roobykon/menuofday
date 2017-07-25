@@ -83,3 +83,4 @@ tmp/tmp.json
 #tmp/mangopay/MangoPaySdkStorage.tmp.php
 /.idea
 /menuofday.iml
+/web/uploads/characteristics/*

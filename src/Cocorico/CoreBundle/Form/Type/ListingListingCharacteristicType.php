@@ -15,6 +15,8 @@ use Cocorico\CoreBundle\Repository\ListingCharacteristicGroupRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ListingListingCharacteristicType extends AbstractType
@@ -88,10 +90,31 @@ class ListingListingCharacteristicType extends AbstractType
             'attr' => ['checked' => 'checked']
         ));
 
-        $builder->add('dish_photo', 'file', array(
-            'required'   => true,
-            "data_class" => null
-        ));
+        $builder->add('dish_photo', 'file', 
+            array(
+//                'data' => $builder->getData()->getPhotoAsFile(),
+                'required'   => true,
+                "data_class" => null
+            )
+        );
+
+//        Add new ListingCharacteristics eventually not already attached to listing
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function (FormEvent $event) {
+                /** @var Listing $listing */
+                $characteristic = $event->getData();
+                $form = $event->getForm();
+                $params = array(
+                    'required'   => true,
+                    "data_class" => null
+                );
+                if($characteristic){
+                    $params = array_merge($params, ['data' => $characteristic->getDishPhoto()]);
+                }
+                $form->add('dish_photo', 'file', $params);
+            }
+        );
 
     }
 

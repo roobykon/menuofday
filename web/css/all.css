@@ -7555,8 +7555,8 @@ span.btn:focus {
     padding: 0;
     display: inline-block;
     vertical-align: top;
-    width: 17px;
-    height: 17px;
+    width: 15px;
+    height: 20px;
     overflow: hidden;
     font-size: 0;
     line-height: 0;
@@ -7565,12 +7565,18 @@ span.btn:focus {
     border-radius: 100%;
     text-align: left !important;
     text-indent: -9999px !important;
-    background: url(../images/icons.png) no-repeat;
+    background: url(../images/icon_info.png) no-repeat;
 }
 
-.tooltip-button:hover {
-    background-position: -27px 0;
+.tooltip-inner {
+    max-width: 350px;
+    /* If max-width does not work, try using width instead */
+    width: 350px;
 }
+
+/*.tooltip-button:hover {*/
+    /*background-position: -27px 0;*/
+/*}*/
 
 /* tooltip style */
 .tooltip {
@@ -10257,7 +10263,7 @@ h1.listing-title a {
 }
 
 .features-list li {
-    padding: 0 0 0 22px;
+    padding: 0;
 }
 
 .features-list li + li {
