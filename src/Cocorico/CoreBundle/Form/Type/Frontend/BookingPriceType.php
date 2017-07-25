@@ -106,6 +106,17 @@ class BookingPriceType extends AbstractType
                 )
             );
         }
+        
+        $maxBookings=$options['max_bookings'];
+        $numberOfPeople=array_combine(range(1, $maxBookings), range(1, $maxBookings));
+        $builder->add(
+            'number_of_people',
+            'choice',
+            array(
+                'label'=>'booking.number_of_people',
+                'choices'=>$numberOfPeople
+            )
+        );
     }
 
 
@@ -121,6 +132,7 @@ class BookingPriceType extends AbstractType
                 'translation_domain' => 'cocorico_booking',
                 'cascade_validation' => true,
                 'validation_groups' => array('new'),
+                'max_bookings' => 10
             )
         );
     }

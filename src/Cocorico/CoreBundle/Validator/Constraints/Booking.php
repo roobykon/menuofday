@@ -20,6 +20,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class Booking extends Constraint implements TranslationContainerInterface
 {
+	public static $messageExpired = 'booking.new.error.expired';
     public static $messageUnavailable = 'booking.new.error.unavailable';
     public static $messageDurationInvalid = 'booking.new.error.duration_invalid';
     public static $messageAmountInvalid = 'booking.new.error.amount_invalid {{ min_price }}';

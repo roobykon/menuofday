@@ -17834,3 +17834,24 @@ body.home-page .main-box-shadow
 .max_bookings_column{
     margin-top: 20px;
 }
+
+.number-of-people-holder
+{
+    clear: both;
+}
+
+.number-of-people-holder strong.title
+{
+    margin-top: 10px !important;
+    overflow-y: initial;
+    white-space: nowrap;
+}
+
+#booking-price-form .time-fields .jcf-select
+{
+    margin-left: 0;
+}
+.number-of-people-holder .jcf-select-opener
+{
+    width: 16px;
+}

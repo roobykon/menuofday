@@ -1,6 +1,6 @@
 {% trans_default_domain 'cocorico_listing' %}
 
-<div id="max-bookings-form-container">
+<div id="expires-at-form-container">
     {% if app.request.isXmlHttpRequest %}
         {% include 'CocoricoCoreBundle:Frontend/Common:_flash.html.twig' %}
     {% endif %}
@@ -8,18 +8,20 @@
     {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    <div class="field-row">
-        {{ form_errors(form.max_bookings) }}
-        <span class="label">{{ form_label(form.max_bookings) }}</span>
+    <div class="field-row datepicker-holder-ajax">
+        {{ form_errors(form.expires_at) }}
+        <span class="label">{{ form_label(form.expires_at) }}</span>
 
-        <div class="field-holder">
-                
-                {{ form_widget(form.max_bookings, {
+        <div class="input-append date field-holder">
+                {{ form_widget(form.expires_at, {
                     'attr': {
-                        'class': 'number-only form-control'
+                        'class': 'form-control',
+                        'placeholder': "/      /"
                     }
                 }) }}
-            
+                <span class="add-on">
+                    <i data-date-icon="icon-calendar" data-time-icon="icon-time" class="icon-calendar"></i>
+                </span>                
         </div>
     </div>
     

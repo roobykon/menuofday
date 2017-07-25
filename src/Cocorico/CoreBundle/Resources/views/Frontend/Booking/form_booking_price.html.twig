@@ -22,7 +22,14 @@
         {% if not timeUnitIsDay %}
             {{ form_widget(form.time_range) }}
         {% endif %}
-
+        <div class="number-of-people-holder">
+            <div class="col">
+                <strong class="title">{{ form_label(form.number_of_people) }}</strong>
+                <div class="select-holder">
+                    {{ form_widget(form.number_of_people) }}
+                </div>
+            </div>
+        </div>
         <input type="submit" class="hidden">
     </fieldset>
 

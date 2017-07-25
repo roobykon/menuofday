@@ -102,6 +102,13 @@ class BookingValidator extends ConstraintValidator
                 'message' => $constraint::$messageUnavailable,
             );
         }
+        
+        if (in_array('expired', $errors)) {
+            $violations[] = array(
+                'message' => $constraint::$messageExpired,
+            );
+        }
+        
 
         //Duration error
         if (in_array('duration_invalid', $errors)) {

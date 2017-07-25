@@ -456,7 +456,7 @@ li.time-fields {
 }
 
 #booking-price-form .time-fields label {
-    font-size: 11px;
+    /*font-size: 11px;*/
 }
 
 .time-ranges label {
@@ -2602,4 +2602,37 @@ ul.collection {
 {
     float: right;
     margin-top: -45px;
+}
+
+#max-bookings-form-container .field-row,
+ .field-row
+{
+    max-width: 235px;
+}
+#expires-at-form-container
+{
+    max-width: 275px;
+}
+
+#expires-at-form-container .field-holder
+{
+    padding-right: 40px;
+}
+
+#expires-at-form-container  .add-on {
+    top: 0;
+    right: 0;
+    position: absolute;
+}
+
+
+#expires-at-form-container .form-control
+{
+    text-align: center;
+}
+#expires-at-form-container .icon-calendar {
+    color: #c6cdd2;
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 34px;
 }

@@ -38,6 +38,7 @@ class BookingNewType extends AbstractType implements TranslationContainerInterfa
     public static $tacError = 'booking.form.tac.error';
     public static $messageError = 'booking.form.message.error';
     public static $unavailableError = 'booking.new.error.unavailable';
+    public static $expiredError = 'booking.new.error.expired';
     public static $amountError = 'booking.new.error.amount_invalid {{ min_price }}';
     public static $voucherError = 'booking.new.error.voucher';
     public static $credentialError = 'user.form.credential.error';
@@ -285,7 +286,11 @@ class BookingNewType extends AbstractType implements TranslationContainerInterfa
          * @param               $errors
          */
         $formErrors = function (FormInterface $form, $errors) {
+        	
+        	print_r(array_keys($errors));
+        	
             $keys = array_keys($errors, 'date_range.invalid.min_start');
+            
             if (count($keys)) {
                 foreach ($keys as $key) {
                     unset($errors[$key]);
@@ -324,7 +329,20 @@ class BookingNewType extends AbstractType implements TranslationContainerInterfa
                     )
                 );
             }
-
+            
+            /*
+            $keys = array_keys($errors, 'expired');
+            if (count($keys)) {
+            	echo 'wrt';
+                foreach ($keys as $key) {
+                    unset($errors[$key]);
+                }
+                $form['date_range']->addError(
+                    new FormError(self::$expiredError)
+                );
+            }
+            */
+            
             $keys = array_keys($errors, 'unavailable');
             if (count($keys)) {
                 foreach ($keys as $key) {
@@ -535,6 +553,7 @@ class BookingNewType extends AbstractType implements TranslationContainerInterfa
         $messages[] = new Message(self::$tacError, 'cocorico');
         $messages[] = new Message(self::$messageError, 'cocorico');
         $messages[] = new Message(self::$unavailableError, 'cocorico');
+        $messages[] = new Message(self::$expiredError, 'cocorico');
         $messages[] = new Message(self::$amountError, 'cocorico');
         $messages[] = new Message(self::$voucherError, 'cocorico_booking');
         $messages[] = new Message(self::$credentialError, 'cocorico');

@@ -174,6 +174,7 @@ class BookingManager extends BaseManager
      * Check Booking Availability And Set Booking Amounts if no error.
      * Return the following errors if any :
      *  - self_booking_invalid => listing can not be booked by listing owner
+     *  - expired => listing is expired
      *  - unavailable => listing is unavailable
      *  - duration_invalid => booking duration is invalid
      *  - see checkBookingDates returns
@@ -218,6 +219,12 @@ class BookingManager extends BaseManager
             && !$listingAvailabilities->count()
         ) {
             $errors[] = 'unavailable';
+        }
+        elseif (
+            $listing->getExpiresAt() 
+            && $listing->getExpiresAt()<$booking->getEnd()
+        ) {
+            $errors[] = 'expired';
         } else {
             $price = $listing->getPrice();
             $amount = $bookingDuration * $price;

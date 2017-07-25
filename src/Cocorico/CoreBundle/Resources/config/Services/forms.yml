@@ -266,3 +266,9 @@ services:
         tags:
             - { name: form.type, alias: listing_edit_max_bookings }
             
+
+    cocorico.form.type.listing_edit_expires_at:
+        class: Cocorico\CoreBundle\Form\Type\Dashboard\ListingEditExpiresAt
+        tags:
+            - { name: form.type, alias: listing_edit_expires_at }
+                        

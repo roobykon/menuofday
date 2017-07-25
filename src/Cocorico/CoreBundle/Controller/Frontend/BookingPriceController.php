@@ -63,11 +63,13 @@ class BookingPriceController extends Controller
             'booking_price',
             $booking,
             array(
+                'max_bookings' => $booking->getListing()->getMaxBookings(),
                 'method' => 'POST',
                 'action' => $this->generateUrl(
                     'cocorico_booking_price',
                     array(
-                        'listing_id' => $booking->getListing()->getId()
+                        'listing_id' => $booking->getListing()->getId(),
+                        'max_bookings' => $booking->getListing()->getMaxBookings()
                     )
                 )
             )

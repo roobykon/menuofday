@@ -172,6 +172,13 @@ abstract class BaseListing
     protected $maxBookings;
 
     /**
+     * @ORM\Column(name="expires_at", type="datetime", nullable=true)
+     *
+     * @var \DateTime
+     */
+    protected $expiresAt;
+    
+    /**
      * Translation proxy
      *
      * @param $method
@@ -589,5 +596,22 @@ abstract class BaseListing
     {
         $this->maxBookings = $maxBookings;
     }
+    
+    /**
+     * @return \DateTime
+     */
+    public function getExpiresAt()
+    {
+        return $this->expiresAt;
+    }
+
+    /**
+     * @param \DateTime $expiresAt
+     */
+    public function setExpiresAt($expiresAt)
+    {
+        $this->expiresAt = $expiresAt;
+    }
+
     
 }
