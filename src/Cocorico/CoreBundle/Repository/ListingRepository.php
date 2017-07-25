@@ -258,7 +258,7 @@ class ListingRepository extends EntityRepository
             ->orderBy('l.createdAt', 'DESC');
         try {
             $query = $queryBuilder->getQuery();
-            $query->useResultCache(true, 21600, 'findByHighestRanking');
+            $query->useResultCache(true, 60, 'findByHighestRanking');
 
             return $query->getResult();
         } catch (NoResultException $e) {
