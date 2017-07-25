@@ -239,7 +239,7 @@ class BookingNewType extends AbstractType implements TranslationContainerInterfa
                 'number_of_people',
                 'hidden',
                 array(
-                    'label' => false
+                    'label' => 'People'
                 )
             );
             

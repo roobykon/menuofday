@@ -36,8 +36,7 @@ class BookingController extends Controller
      * @Route("/{listing_id}/{start}/{end}/{start_time}/{end_time}/{number_of_people}/new",
      *      name="cocorico_booking_new",
      *      requirements={
-     *          "listing_id" = "\d+",
-     *          "number_of_people" = "\d+"
+     *          "listing_id" = "\d+"
      *      },
      *      defaults={"start_time" = "00:00", "end_time" = "00:00"}
      * )
@@ -217,7 +216,8 @@ class BookingController extends Controller
                         'start' => $booking->getStart()->format('Y-m-d'),
                         'end' => $booking->getEnd()->format('Y-m-d'),
                         'start_time' => $booking->getStartTime() ? $booking->getStartTime()->format('H:i') : "00:00",
-                        'end_time' => $booking->getEndTime() ? $booking->getEndTime()->format('H:i') : "00:00"
+                        'end_time' => $booking->getEndTime() ? $booking->getEndTime()->format('H:i') : "00:00",
+                        'number_of_people' => $booking->getNumberOfPeople() ? $booking->getNumberOfPeople() : "1"
                     )
                 )
             )
