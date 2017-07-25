@@ -149,6 +149,14 @@ abstract class BaseBooking
      */
     protected $amount;
 
+    /**
+     * @ORM\Column(name="number_of_people", type="smallint", nullable=false)
+     *
+     * Number of people in booking
+     *
+     * @var integer
+     */
+    protected $numberOfPeople;
 
     /**
      * @ORM\Column(name="amount_fee_as_asker", type="decimal", precision=8, scale=0)
@@ -809,4 +817,21 @@ abstract class BaseBooking
         $this->message = $message;
     }
 
+    /**
+     * @return int
+     */
+    public function getNumberOfPeople()
+    {
+        return $this->numberOfPeople;
+    }
+
+    /**
+     * @param int $people
+     */
+    public function setNumberOfPeople($people)
+    {
+        $this->numberOfPeople = $people;
+    }
+    
+    
 }

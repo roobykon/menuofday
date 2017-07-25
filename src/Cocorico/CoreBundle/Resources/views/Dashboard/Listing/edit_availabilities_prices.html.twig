@@ -63,6 +63,11 @@
                     </div>
 
                     <div class="form-block">
+                        <h3>{{ 'listing.edit.expires_at.title'|trans }}</h3>
+                        {{ render(controller('CocoricoCoreBundle:Dashboard/Offerer/Listing:expiresAtForm', {'listing': listing})) }}
+                    </div>
+
+                    <div class="form-block">
                         {{ form_start(form_prices, {'attr': {'id': 'prices-form', 'class': 'form'}}) }}
 
                         <!-- price-range -->

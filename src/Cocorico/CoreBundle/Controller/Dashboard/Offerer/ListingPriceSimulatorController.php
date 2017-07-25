@@ -67,7 +67,8 @@ class ListingPriceSimulatorController extends Controller
                 ),
             )
         );
-
+                
+        $form->remove('number_of_people');
         return $form;
     }
 

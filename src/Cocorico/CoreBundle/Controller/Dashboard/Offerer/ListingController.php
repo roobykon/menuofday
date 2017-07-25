@@ -507,4 +507,87 @@ class ListingController extends Controller
         }
     }
     
+    /**
+     * @param  Listing $listing
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    private function createExpiresAtForm(Listing $listing)
+    {
+        $form = $this->get('form.factory')->createNamed(
+            'listing_expires_at',
+            'listing_edit_expires_at',
+            $listing,
+            array(
+                'method' => 'POST',
+                'action' => $this->generateUrl(
+                    'cocorico_dashboard_listing_edit_expires_at',
+                    array('id' => $listing->getId())
+                ),
+            )
+        );
+
+        return $form;
+    }
+    
+    
+    /**
+     * @param  Listing $listing
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function expiresAtFormAction($listing)
+    {
+        $form = $this->createExpiresAtForm($listing);
+
+        return $this->render(
+            '@CocoricoCore/Dashboard/Listing/form_expires_at.html.twig',
+            array(
+                'form' => $form->createView(),
+                'listing' => $listing
+            )
+        );
+    }
+    
+    /**
+     * Edit Listing max bookings.
+     *
+     * @Route("/{id}/edit_expires_at", name="cocorico_dashboard_listing_edit_expires_at", requirements={"id" = "\d+"})
+     * @Security("is_granted('edit', listing)")
+     * @ParamConverter("listing", class="CocoricoCoreBundle:Listing")
+     *
+     * @Method({"POST"})
+     *
+     * @param Request $request
+     * @param Listing $listing
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function editExpiresAtAction(Request $request, Listing $listing)
+    {
+        $form = $this->createExpiresAtForm($listing);
+        $form->handleRequest($request);
+
+        $formIsValid = $form->isSubmitted() && $form->isValid();
+        if ($formIsValid) {
+            $listing = $this->get("cocorico.listing.manager")->save($listing);
+            $this->addFormSuccessMessagesToFlashBag('price');
+        }
+
+        if ($request->isXmlHttpRequest()) {
+            return $this->render(
+                '@CocoricoCore/Dashboard/Listing/form_expires_at.html.twig',
+                array(
+                    'form' => $form->createView(),
+                    'listing' => $listing
+                )
+            );
+        } else {
+            if (!$formIsValid) {
+                $this->addFormErrorMessagesToFlashBag($form);
+            }
+
+            return new RedirectResponse($request->headers->get('referer'));
+        }
+    }
+    
+    
 }

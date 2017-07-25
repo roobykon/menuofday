@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2017-07-21T10:14:22Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2017-07-25T08:10:26Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -32,6 +32,10 @@
       <trans-unit id="9cc287ca6419b68c601007f17a971052386de774" resname="booking.new.error.amount_invalid {{ min_price }}">
         <source>booking.new.error.amount_invalid {{ min_price }}</source>
         <target>Montant minimum : {{ min_price }}</target>
+      </trans-unit>
+      <trans-unit id="6b7e3343ad6126e5edb71a13c5b14c949091802b" resname="booking.new.error.expired">
+        <source>booking.new.error.expired</source>
+        <target state="new">booking.new.error.expired</target>
       </trans-unit>
       <trans-unit id="d68c0502ecf8fe9d7b36ded833d44d297405b990" resname="booking.new.error.unavailable">
         <source>booking.new.error.unavailable</source>
@@ -142,53 +146,48 @@
       <trans-unit id="a949baa3fcb4d3b0ab046dccd4e8b71bf5974dcb" resname="footer.about.title">
         <source>footer.about.title</source>
         <target>A propos</target>
-        <jms:reference-file line="37">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="41">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5e1d2c2c71162e0c24eddb9cae78b0296d9f6425" resname="footer.all_right_reserved">
         <source>footer.all_right_reserved</source>
         <target>Tous droits réservés à</target>
-        <jms:reference-file line="106">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="113">Frontend/Common/_footer.html.twig</jms:reference-file>
         <jms:reference-file line="82">views/Mails/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="eafbb9e9132e8fc3dfed33243e7fb8781ab79935" resname="footer.contact_us.link">
         <source>footer.contact_us.link</source>
         <target>Nous contacter</target>
-        <jms:reference-file line="63">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="70">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a650649eef07e27013b9ce411e4b9491b00f80b6" resname="footer.contact_us.title">
         <source>footer.contact_us.title</source>
         <target>Nous contacter</target>
-        <jms:reference-file line="16">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="18">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c9f0d40883cc4ca2e9d6a025b87e64233d229666" resname="footer.donate">
         <source>footer.donate</source>
         <target state="new">footer.donate</target>
-        <jms:reference-file line="68">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="75">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="28ad4e2c00f3d990a04f9ab8768495124bb6c10a" resname="footer.faq.link">
         <source>footer.faq.link</source>
         <target>FAQ</target>
-        <jms:reference-file line="58">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="65">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f29216648f11b939a46dacd7be3882453ad8dc5f" resname="footer.help.title">
         <source>footer.help.title</source>
         <target><![CDATA[Aide & Contact]]></target>
-        <jms:reference-file line="55">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="61">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e0e024ec17d9d12220ca5b17920924967e9d9f4d" resname="footer.how_it_works.link">
         <source>footer.how_it_works.link</source>
         <target>Comment ca marche?</target>
-        <jms:reference-file line="45">Frontend/Common/_footer.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="67cf5390e62e92e302c2101585471ebf0c1c3d02" resname="footer.legal_notices.link">
-        <source>footer.legal_notices.link</source>
-        <target>Mentions légales</target>
-        <jms:reference-file line="96">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="50">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e961dfa45f7be14560d14913711c071c88968d3c" resname="footer.the_team.link">
         <source>footer.the_team.link</source>
         <target>L'équipe</target>
-        <jms:reference-file line="50">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="55">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="69a1518dded704dee13c212c8fa93bfdbec43543" resname="footer.title.various">
         <source>footer.title.various</source>
@@ -198,7 +197,7 @@
       <trans-unit id="5f64194a8d285094204c3ef94b8dc3b6bebfa2d0" resname="footer.who_we_are.link">
         <source>footer.who_we_are.link</source>
         <target>Qui sommes nous?</target>
-        <jms:reference-file line="40">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="45">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ccaeec1d1b1dbbc71e18f43031b34b69864d0ec0" resname="form.error">
         <source>form.error</source>
@@ -310,7 +309,7 @@
       <trans-unit id="9cdd94fbd5223a9896cf916b4a1d12bf4909a0bb" resname="nav.faq.slug">
         <source>nav.faq.slug</source>
         <target>faq</target>
-        <jms:reference-file line="57">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="64">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5d333c9dad0a06048316f4b2174c9fce03a73b2a" resname="nav.favorites.link">
         <source>nav.favorites.link</source>
@@ -326,12 +325,7 @@
       <trans-unit id="7b82d68a47d23888af84cb20db4bcd9734f3b056" resname="nav.how_it_works.slug">
         <source>nav.how_it_works.slug</source>
         <target>comment-ca-marche</target>
-        <jms:reference-file line="44">Frontend/Common/_footer.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="dd86d14d6bac7137d6121b41fd4994663f7ea987" resname="nav.legal_notices.slug">
-        <source>nav.legal_notices.slug</source>
-        <target>mentions-legales</target>
-        <jms:reference-file line="94">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="49">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e02bfbaa7fa4edd8c578a1be1def202e6c3220ac" resname="nav.listing.new.link">
         <source>nav.listing.new.link</source>
@@ -367,7 +361,7 @@
       <trans-unit id="4d66148bc56e54a9936116977b8f8bbdf6092335" resname="nav.the_team.slug">
         <source>nav.the_team.slug</source>
         <target>l-equipe</target>
-        <jms:reference-file line="49">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="54">Frontend/Common/_footer.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ae075cd0545e4ced4f09a93784ae2fc0dfc5e6cf" resname="nav.who_we_are.link">
         <source>nav.who_we_are.link</source>
@@ -377,7 +371,7 @@
       <trans-unit id="25752f0500683a8055d9b148a43277a0977e61ce" resname="nav.who_we_are.slug">
         <source>nav.who_we_are.slug</source>
         <target>qui-sommes-nous</target>
-        <jms:reference-file line="39">Frontend/Common/_footer.html.twig</jms:reference-file>
+        <jms:reference-file line="44">Frontend/Common/_footer.html.twig</jms:reference-file>
         <jms:reference-file line="54">Frontend/Common/_header.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="774b40fc90dcebf1a82352cb39f44e3e36120bad" resname="time_range.invalid.duration">

@@ -1,6 +1,6 @@
 {% trans_default_domain 'cocorico_listing' %}
 
-<div id="duration-form-container">
+<div id="max-bookings-form-container">
     {% if app.request.isXmlHttpRequest %}
         {% include 'CocoricoCoreBundle:Frontend/Common:_flash.html.twig' %}
     {% endif %}
@@ -13,13 +13,13 @@
         <span class="label">{{ form_label(form.max_bookings) }}</span>
 
         <div class="field-holder">
-            <div class="field-holder">
+                
                 {{ form_widget(form.max_bookings, {
                     'attr': {
-                        'class': 'no-arrow'
+                        'class': 'number-only form-control'
                     }
                 }) }}
-            </div>
+            
         </div>
     </div>
     

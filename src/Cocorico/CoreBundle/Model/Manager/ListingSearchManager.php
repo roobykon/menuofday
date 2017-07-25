@@ -166,7 +166,11 @@ class ListingSearchManager
                     )
                     ->setParameter('duration', $duration);
             }
-
+            
+            // listing expiration
+            $queryBuilder
+                ->andWhere('l.expiresAt IS NULL OR l.expiresAt>=:expiresDate ')
+                ->setParameter('expiresDate', $dateRange->getEnd());
         }
 
         //Prices
@@ -303,8 +307,6 @@ class ListingSearchManager
         $priceRange = null,
         $status
     ) {
-    	
-    	print_r($timeRange);
         $daysFlexibility = $flexibility ? $flexibility : 0;
 
         //Create first date range from flexibility days
