@@ -97,7 +97,6 @@ class Listing extends BaseListing
      */
     private $discounts;
 
-
     /**
      * @ORM\OneToMany(targetEntity="Booking", mappedBy="listing", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"createdAt" = "desc"})
@@ -116,7 +115,6 @@ class Listing extends BaseListing
      */
     private $options;
 
-
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -127,7 +125,6 @@ class Listing extends BaseListing
         $this->threads = new ArrayCollection();
         $this->options = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -151,7 +148,6 @@ class Listing extends BaseListing
 
         return $this;
     }
-
 
     /**
      * Remove characteristics
@@ -188,8 +184,8 @@ class Listing extends BaseListing
                  * @var ListingListingCharacteristic $a
                  * @var ListingListingCharacteristic $b
                  */
-                $groupPosA = $a->getListingCharacteristic()->getListingCharacteristicGroup()->getPosition();
-                $groupPosB = $b->getListingCharacteristic()->getListingCharacteristicGroup()->getPosition();
+                $groupPosA = $a->getListingCharacteristicGroup() ? $a->getListingCharacteristicGroup()->getPosition() : $a->getListingCharacteristic()->getListingCharacteristicGroup()->getPosition();
+                $groupPosB = $b->getListingCharacteristicGroup() ? $b->getListingCharacteristicGroup()->getPosition() : $b->getListingCharacteristic()->getListingCharacteristicGroup()->getPosition();
 
                 $characteristicPosA = $a->getListingCharacteristic()->getPosition();
                 $characteristicPosB = $b->getListingCharacteristic()->getPosition();
@@ -216,10 +212,10 @@ class Listing extends BaseListing
      */
     public function addListingListingCharacteristicsOrderedByGroup(
         ListingListingCharacteristic $listingListingCharacteristic
-    ) {
+    )
+    {
         return $this->addListingListingCharacteristic($listingListingCharacteristic);
     }
-
 
     /**
      * Remove characteristics
@@ -228,10 +224,10 @@ class Listing extends BaseListing
      */
     public function removeListingListingCharacteristicsOrderedByGroup(
         ListingListingCharacteristic $listingListingCharacteristic
-    ) {
+    )
+    {
         $this->removeListingListingCharacteristic($listingListingCharacteristic);
     }
-
 
     /**
      * Add category
@@ -246,7 +242,6 @@ class Listing extends BaseListing
 
         return $this;
     }
-
 
     /**
      * Remove category
@@ -271,7 +266,6 @@ class Listing extends BaseListing
     {
         return $this->listingListingCategories;
     }
-
 
     /**
      * Set user
@@ -354,7 +348,6 @@ class Listing extends BaseListing
     {
         return $this->location;
     }
-
 
     /**
      * Add discount
@@ -537,9 +530,8 @@ class Listing extends BaseListing
         $this->options = $options;
     }
 
-
     /**
-     * @param int  $minImages
+     * @param int $minImages
      * @param bool $strict
      *
      * @return array

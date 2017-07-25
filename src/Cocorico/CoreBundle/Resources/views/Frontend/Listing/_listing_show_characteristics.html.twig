@@ -6,7 +6,7 @@
     <!--@formatter:off-->
     {% for characteristic in characterisitics %}
         {% set listingCharacteristic = characteristic.listingCharacteristic %}
-        {% set listingCharacteristicGroup =  listingCharacteristic.listingCharacteristicGroup.getName() %}
+        {% set listingCharacteristicGroup =  characteristic.listingCharacteristicGroup.getName() %}
         {% set listingCharacteristicValue = characteristic.listingCharacteristicValue %}
 
         {#{% if listingCharacteristicValue %}#}

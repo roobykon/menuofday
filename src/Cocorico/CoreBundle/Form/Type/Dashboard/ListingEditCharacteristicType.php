@@ -47,7 +47,7 @@ class ListingEditCharacteristicType extends ListingEditType
 
 
 
-        //Add new ListingCharacteristics eventually not already attached to listing
+//        Add new ListingCharacteristics eventually not already attached to listing
         $builder->addEventListener(
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) {

@@ -355,7 +355,7 @@ $.fn.addFormToCollection = function (collection, item, callbackSuccess) {
     function addForm($collectionHolder) {
         var prototype = $collectionHolder.parent('div').not(".errors").data('prototype');
         var index = $collectionHolder.data('index');
-
+        console.log($collectionHolder.parent('div').not(".errors").data('prototype'), $collectionHolder.parent('div'));
         var newForm = prototype.replace(/__name__/g, index);
         $collectionHolder.data('index', index + 1);
         $collectionHolder.append(newForm);

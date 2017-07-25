@@ -85,18 +85,14 @@ class ListingListingCharacteristicType extends AbstractType
             )
         );
 
-        $builder->add('dish_visibility', 'checkbox', array(
-            'required'   => false,
-            'attr' => ['checked' => 'checked']
-        ));
 
-        $builder->add('dish_photo', 'file', 
-            array(
-//                'data' => $builder->getData()->getPhotoAsFile(),
-                'required'   => true,
-                "data_class" => null
-            )
-        );
+//        $builder->add('dish_photo', 'file',
+//            array(
+////                'data' => $builder->getData()->getPhotoAsFile(),
+//                'required'   => true,
+//                "data_class" => null
+//            )
+//        );
 
 //        Add new ListingCharacteristics eventually not already attached to listing
         $builder->addEventListener(
@@ -112,6 +108,13 @@ class ListingListingCharacteristicType extends AbstractType
                 if($characteristic){
                     $params = array_merge($params, ['data' => $characteristic->getDishPhoto()]);
                 }
+
+                $form->add('dish_visibility', 'checkbox', array(
+                    'required'   => false,
+                    'attr' => !empty($characteristic) && $characteristic->getDishVisibility() ? ['checked' => 'checked'] : [],
+                    'data' => !empty($characteristic) ? $characteristic->getDishVisibility() : false
+                ));
+
                 $form->add('dish_photo', 'file', $params);
             }
         );
