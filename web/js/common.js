@@ -472,6 +472,10 @@ function initDatePickerAjax(callbackSuccess, parentDatesElt) {
             });
         });
     });
+    
+    $('#number_of_people').on('change', function(e){
+        submitDatePickerAjaxForm(callbackSuccess, parentDatesElt);
+    });
 
 }
 

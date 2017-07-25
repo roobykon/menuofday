@@ -85,7 +85,8 @@ class BookingPriceFormHandler
             $listing,
             $user,
             $listingSearchRequest->getDateRange(),
-            $listingSearchRequest->getTimeRange()
+            $listingSearchRequest->getTimeRange(),
+            $this->request->request->get('number_of_people')
         );
 
         return $booking;

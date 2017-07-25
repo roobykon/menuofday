@@ -140,7 +140,7 @@ class BookingManager extends BaseManager
      * @param TimeRange|boolean $timeRange
      * @return Booking
      */
-    public function initBooking(Listing $listing, $user, DateRange $dateRange = null, $timeRange = null)
+    public function initBooking(Listing $listing, $user, DateRange $dateRange = null, $timeRange = null, $numberOfPeople=1)
     {
         $booking = new Booking();
         $booking->setListing($listing);
@@ -165,6 +165,8 @@ class BookingManager extends BaseManager
         }
 
         $booking->setCancellationPolicy($listing->getCancellationPolicy());
+        
+        $booking->setNumberOfPeople($numberOfPeople);
 
         return $booking;
     }
@@ -202,7 +204,7 @@ class BookingManager extends BaseManager
             false
         );
         //echo "nb listingAvailabilities" . $listingAvailabilities->count() . "<br>";
-
+        
         $bookingDuration = $booking->getDuration($this->endDayIncluded, $this->timeUnit);
 
         //echo "bookingDuration" . $bookingDuration . "<br>";
@@ -324,6 +326,9 @@ class BookingManager extends BaseManager
                  * Fees are taken on options amount
                  *
                  */
+            	
+            	$people = $booking->getNumberOfPeople();
+            	$amount *= $people;
                 if ($this->optionIsEnabled() && $booking->getOptions()) {
                     $amountOptions = $this->optionManager->getBookingOptionsAmount($booking);
                     $booking->setAmountOptions($amountOptions);

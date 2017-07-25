@@ -7,8 +7,8 @@
         </header>
         <body>
             <trans-unit id="9b81dbdb23890155a309ef09d92759b18552ea0c" resname="cocorico_booking_new">
-                <source>/booking/{listing_id}/{start}/{end}/{start_time}/{end_time}/new</source>
-                <target>/booking/{listing_id}/{start}/{end}/{start_time}/{end_time}/new</target>
+                <source>/booking/{listing_id}/{start}/{end}/{start_time}/{end_time}/{number_of_people}/new</source>
+                <target>/booking/{listing_id}/{start}/{end}/{start_time}/{end_time}/{number_of_people}/new</target>
             </trans-unit>
             <trans-unit id="81a1cea4ee90d53ca7904aac09cd6dbda96fc3dc" resname="cocorico_booking_price">
                 <source>/booking/{listing_id}/price</source>

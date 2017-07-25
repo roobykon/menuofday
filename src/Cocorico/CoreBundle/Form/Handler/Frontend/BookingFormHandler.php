@@ -56,6 +56,7 @@ class BookingFormHandler
      * @param  \DateTime $end       format yyyy-mm-dd
      * @param  \DateTime $startTime format H:i
      * @param  \DateTime $endTime   format H:i
+     * @param  int $number_of_people 
      *
      * @return Booking $booking
      */
@@ -65,7 +66,8 @@ class BookingFormHandler
         \DateTime $start = null,
         \DateTime $end = null,
         \DateTime $startTime = null,
-        \DateTime $endTime = null
+        \DateTime $endTime = null,
+        $numberOfPeople = null
     ) {
         $dateRange = $timeRange = null;
         if ($start && $end) {
@@ -94,9 +96,10 @@ class BookingFormHandler
                     new \DateTime('1970-01-01 ' . $timeRangeParameter['end'])
                 );
             }
+            $numberOfPeople=$this->request->request->get('number_of_people');
         }
 
-        $booking = $this->bookingManager->initBooking($listing, $user, $dateRange, $timeRange);
+        $booking = $this->bookingManager->initBooking($listing, $user, $dateRange, $timeRange, $numberOfPeople);
 
         return $booking;
     }
