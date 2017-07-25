@@ -140,7 +140,7 @@ class BookingManager extends BaseManager
      * @param TimeRange|boolean $timeRange
      * @return Booking
      */
-    public function initBooking(Listing $listing, $user, DateRange $dateRange = null, $timeRange = null)
+    public function initBooking(Listing $listing, $user, DateRange $dateRange = null, $timeRange = null, $numberOfPeople=1)
     {
         $booking = new Booking();
         $booking->setListing($listing);
@@ -165,6 +165,8 @@ class BookingManager extends BaseManager
         }
 
         $booking->setCancellationPolicy($listing->getCancellationPolicy());
+        
+        $booking->setNumberOfPeople($numberOfPeople);
 
         return $booking;
     }

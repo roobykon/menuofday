@@ -124,7 +124,8 @@ class BookingPriceController extends Controller
                         'start' => $booking->getStart()->format('Y-m-d'),
                         'end' => $booking->getEnd()->format('Y-m-d'),
                         'start_time' => $booking->getStartTime() ? $booking->getStartTime()->format('H:i') : "00:00",
-                        'end_time' => $booking->getEndTime() ? $booking->getEndTime()->format('H:i') : "00:00"
+                        'end_time' => $booking->getEndTime() ? $booking->getEndTime()->format('H:i') : "00:00",
+                        'number_of_people' => $booking->getNumberOfPeople() ? $booking->getNumberOfPeople() : "1"
                     )
                 )
             );

@@ -33,10 +33,11 @@ class BookingController extends Controller
     /**
      * Creates a new Booking entity.
      *
-     * @Route("/{listing_id}/{start}/{end}/{start_time}/{end_time}/new",
+     * @Route("/{listing_id}/{start}/{end}/{start_time}/{end_time}/{number_of_people}/new",
      *      name="cocorico_booking_new",
      *      requirements={
-     *          "listing_id" = "\d+"
+     *          "listing_id" = "\d+",
+     *          "number_of_people" = "\d+"
      *      },
      *      defaults={"start_time" = "00:00", "end_time" = "00:00"}
      * )
@@ -49,6 +50,7 @@ class BookingController extends Controller
      * @ParamConverter("end", options={"format": "Y-m-d"})
      * @ParamConverter("start_time", options={"format": "H:i"})
      * @ParamConverter("end_time", options={"format": "H:i"})
+     * @ParamConverter("end_time", options={"format": "H:i"})
      *
      * @Method({"GET", "POST"})
      *
@@ -58,6 +60,7 @@ class BookingController extends Controller
      * @param  \DateTime $end        format yyyy-mm-dd
      * @param  \DateTime $start_time format H:i
      * @param  \DateTime $end_time   format H:i
+     * @param  int $number_of_people  
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -67,7 +70,8 @@ class BookingController extends Controller
         \DateTime $start,
         \DateTime $end,
         \DateTime $start_time,
-        \DateTime $end_time
+        \DateTime $end_time,
+        $number_of_people
     ) {
         $dispatcher = $this->get('event_dispatcher');
         $session = $this->container->get('session');
@@ -80,7 +84,8 @@ class BookingController extends Controller
             $start,
             $end,
             $start_time,
-            $end_time
+            $end_time,
+            $number_of_people
         );
 
         $event = new BookingEvent($booking);

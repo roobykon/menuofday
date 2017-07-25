@@ -234,6 +234,16 @@ class BookingNewType extends AbstractType implements TranslationContainerInterfa
                 )
             );
 
+        $builder
+            ->add(
+                'number_of_people',
+                'hidden',
+                array(
+                    'label' => false
+                )
+            );
+            
+            
         //Dispatch BOOKING_NEW_FORM_BUILD Event. Listener listening this event can add fields and validation
         //Used for example by some payment provider bundle like mangopay
         $this->dispatcher->dispatch(BookingFormEvents::BOOKING_NEW_FORM_BUILD, new BookingFormBuilderEvent($builder));
