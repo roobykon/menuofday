@@ -2608,7 +2608,7 @@ ul.collection {
 {
     max-width: 235px;
 }
-#expires-at-form-container  .field-row
+#expires-at-form-container .field-row
 {
     max-width: 275px;
 }
@@ -2634,4 +2634,56 @@ ul.collection {
     cursor: pointer;
     font-size: 25px;
     line-height: 34px;
+}
+#price-simulator-form .datepicker-holder-ajax,
+#price-simulator-form .timepicker-holder-ajax
+{
+    width: 47%;
+}
+
+#price-simulator-form .field_row
+{
+    height: 45px;
+}
+
+
+#price-simulator-form .datepicker-holder-ajax .col,
+#price-simulator-form .timepicker-holder-ajax .col
+{
+    width: 100%;
+}
+
+#price-simulator-form .datepicker-holder-ajax
+{
+    float: left;
+}
+
+#price-simulator-form .timepicker-holder-ajax
+{
+    float: right;
+    margin-top: 0;
+}
+
+#price-simulator-form .timepicker-holder-ajax .col:last-child label
+{
+    display: none;
+}
+
+#price-simulator-form #number_of_people
+{
+    display: none;
+}
+
+#price-simulator-form .number-of-people-holder
+{
+    clear: none;
+}
+#price-simulator-form .number-of-people-holder .jcf-select
+{
+    width: 100px;
+}
+
+#price-simulator-form .price-area
+{
+    margin-bottom: 0;
 }
