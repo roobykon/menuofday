@@ -2604,12 +2604,11 @@ ul.collection {
     margin-top: -45px;
 }
 
-#max-bookings-form-container .field-row,
- .field-row
+#max-bookings-form-container .field-row
 {
     max-width: 235px;
 }
-#expires-at-form-container
+#expires-at-form-container  .field-row
 {
     max-width: 275px;
 }
